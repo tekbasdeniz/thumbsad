@@ -7,10 +7,10 @@ const Hero = () => {
     const isEn = pathname.startsWith("/en");
 
     return (
-        <section className="w-full min-h-[85vh] flex items-center justify-center bg-white px-6">
+        <section className="w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center bg-white px-6 pt-32 md:pt-0">
             <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-8">
 
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black leading-tight">
+                <h1 className="text-[32px] leading-[1.2] md:text-7xl font-bold tracking-normal md:tracking-tighter text-black md:leading-tight px-2">
                     AI Growth Partner
                 </h1>
 

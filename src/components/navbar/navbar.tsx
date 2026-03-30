@@ -33,7 +33,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 20);
-      
+
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       } else {
@@ -51,27 +51,27 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${
-        isScrolled
-          ? "bg-[#0a246b] border-white/10 shadow-md py-3"
-          : "bg-[#0a246b] border-transparent py-5"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isVisible ? "translate-y-0" : "-translate-y-full"
+        } ${isScrolled
+          ? "bg-[#0a246b] border-white/10 shadow-md py-2 md:py-3"
+          : "bg-[#0a246b] border-transparent py-3 md:py-5"
+        }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link
           href={isEn ? "/en" : "/"}
           onClick={() => window.scrollTo(0, 0)}
-          className={`transition-all duration-300 hover:opacity-80 block relative mix-blend-lighten ${
-            isScrolled ? "w-[240px] h-[65px] md:w-[280px] md:h-[75px]" : "w-[300px] h-[85px] md:w-[380px] md:h-[105px]"
-          }`}
+          className={`transition-all duration-300 hover:opacity-80 block relative mix-blend-lighten ${isScrolled
+              ? "w-[150px] h-[50px] md:w-[280px] md:h-[75px]"
+              : "w-[180px] h-[60px] md:w-[380px] md:h-[105px]"
+            }`}
         >
-          <Image 
-            src="/images/thumbsad-logo.webp" 
-            alt="ThumbsAd Logo" 
+          <Image
+            src="/images/thumbsad-logo.webp"
+            alt="ThumbsAd Logo"
             fill
+            sizes="(max-width: 768px) 150px, 400px"
             style={{ objectFit: 'contain', objectPosition: 'left center' }}
             priority
           />
@@ -84,11 +84,10 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  pathname === link.href
+                className={`text-sm font-medium transition-colors ${pathname === link.href
                     ? "text-white"
                     : "text-gray-300 hover:text-white"
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
@@ -109,18 +108,16 @@ export default function Navbar() {
             <div className="flex items-center flex-row gap-2 text-xs font-semibold tracking-wider">
               <Link
                 href={isEn ? toggleLangUrl : pathname}
-                className={`${
-                  !isEn ? "text-white" : "text-gray-400 hover:text-gray-200"
-                } transition-colors`}
+                className={`${!isEn ? "text-white" : "text-gray-400 hover:text-gray-200"
+                  } transition-colors`}
               >
                 TR
               </Link>
               <span className="text-gray-500">/</span>
               <Link
                 href={!isEn ? toggleLangUrl : pathname}
-                className={`${
-                  isEn ? "text-white" : "text-gray-400 hover:text-gray-200"
-                } transition-colors`}
+                className={`${isEn ? "text-white" : "text-gray-400 hover:text-gray-200"
+                  } transition-colors`}
               >
                 EN
               </Link>
