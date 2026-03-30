@@ -1,17 +1,26 @@
-import React from 'react';
+"use client";
+
+import { usePathname } from "next/navigation";
 
 const Hero = () => {
+    const pathname = usePathname() || "";
+    const isEn = pathname.startsWith("/en");
+
     return (
-        // Buraya birazdan page.tsx'teki kodu yapıştıracağız
-        <div><section className="w-full min-h-[85vh] flex items-center justify-center bg-white px-6">
+        <section className="w-full min-h-[85vh] flex items-center justify-center bg-white px-6">
             <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-8">
 
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black leading-tight">
                     AI Growth Partner
                 </h1>
+
                 <p className="text-xl md:text-2xl text-gray-500 max-w-2xl leading-relaxed font-light">
-                    Yapay zeka destekli büyüme projeleri, dijital sistemler ve ölçeklenebilir pazarlama yapıları tasarlar ve uygular.
+                    {isEn
+                        ? "Designing and executing AI-powered growth projects, digital systems, and scalable marketing structures."
+                        : "Yapay zeka destekli büyüme projeleri, dijital sistemler ve ölçeklenebilir pazarlama yapıları tasarlar ve uygular."
+                    }
                 </p>
+
                 <div className="flex flex-col gap-4 mt-8 w-full max-w-md mx-auto">
                     <a
                         href="https://calendar.app.google/hjAXB9fuz4cwxXfe7"
@@ -25,14 +34,18 @@ const Hero = () => {
                             <line x1="8" y1="2" x2="8" y2="6" />
                             <line x1="3" y1="10" x2="21" y2="10" />
                         </svg>
-                        AI Büyüme Analizi Talep Et
+                        {isEn ? "Request AI Growth Analysis" : "AI Büyüme Analizi Talep Et"}
                     </a>
+
                     <p className="text-xs text-gray-400 mt-2">
-                        *Doğrudan takvimimizden randevu alın. Toplantı bağlantısını içeren anında bir onay alacaksınız.
+                        {isEn
+                            ? "*Book your slot directly on our calendar. You’ll receive an instant confirmation with the meeting link."
+                            : "*Doğrudan takvimimizden randevu alın. Toplantı bağlantısını içeren anında bir onay alacaksınız."
+                        }
                     </p>
                 </div>
             </div>
-        </section>t</div>
+        </section>
     );
 };
 

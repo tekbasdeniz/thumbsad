@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -66,8 +65,8 @@ export default function ExperiencesMarquee({
 
       {!hideButton && (
         <div className="pt-4">
-          <a 
-            href={isEn ? "/en/experiences" : "/experiences"} 
+          <a
+            href={isEn ? "/en/experiences" : "/experiences"}
             className="px-8 py-4 rounded-full bg-[#0a246b] text-white font-medium hover:bg-[#0a246b]/90 transition-all inline-flex items-center gap-2"
           >
             {isEn ? "View All Experiences" : "Tüm Deneyimler"}
