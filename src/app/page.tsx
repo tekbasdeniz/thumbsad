@@ -2,6 +2,7 @@ import Link from "next/link";
 import ExperiencesMarquee from "@/components/sections/ExperiencesMarquee";
 import TruOptSection from "@/components/sections/TruOptSection";
 
+
 export default function HomePageTr() {
   return (
     <div className="flex flex-col w-full">
