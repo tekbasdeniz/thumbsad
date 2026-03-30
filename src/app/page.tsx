@@ -2,8 +2,8 @@
 import ExperiencesMarquee from "@/components/sections/ExperiencesMarquee";
 import TruOptSection from "@/components/sections/TruOptSection";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/about";
-import Solutions from "@/components/sections/solutions";
+import About from "@/components/sections/About";
+import Solutions from "@/components/sections/Solutions";
 
 export default function HomePageTr() {
   return (
