@@ -67,10 +67,10 @@ export default function ExperiencesMarquee({
         <div className="pt-4">
           <a
             href={isEn ? "/en/experiences" : "/experiences"}
-            className="px-8 py-4 rounded-full bg-[#0a246b] text-white font-medium hover:bg-[#0a246b]/90 transition-all inline-flex items-center gap-2"
+            className="px-8 py-4 rounded-full bg-[#0a246b] text-white font-semibold transition-transform hover:-translate-y-1 inline-flex items-center gap-2 group"
           >
             {isEn ? "View All Experiences" : "Tüm Deneyimler"}
-            <span aria-hidden="true">&rarr;</span>
+            <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">&rarr;</span>
           </a>
         </div>
       )}

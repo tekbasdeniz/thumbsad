@@ -4,6 +4,7 @@ import TruOptSection from "@/components/sections/TruOptSection";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Solutions from "@/components/sections/Solutions";
+import InsightsSection from "@/components/sections/InsightsSection";
 
 export default function HomePageTr() {
   return (
@@ -15,7 +16,10 @@ export default function HomePageTr() {
       <About />
 
       {/* Solutions Preview */}
-      <Solutions />
+      <Solutions isHome={true} />
+
+      {/* Insights Section */}
+      <InsightsSection />
 
       {/* Experiences Preview */}
       <ExperiencesMarquee />

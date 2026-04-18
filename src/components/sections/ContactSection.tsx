@@ -2,38 +2,38 @@
 
 import { usePathname } from "next/navigation";
 
-export default function ContactSection() {
+export default function ContactSection({ isPage = false }: { isPage?: boolean }) {
   const pathname = usePathname();
   const isEn = pathname.startsWith("/en");
 
   const text = isEn
     ? {
-        title: "Unlock Your Brand's AI Potential",
-        description:
-          "For projects, partnerships, and growth initiatives, get in touch.",
-        btn: "Get in Touch",
+        title: "Let’s Build Your Growth System",
+        description: "For projects, partnerships, and growth initiatives, get in touch.",
+        bookCall: "Book a Call",
+        requestAudit: "Request AI Audit",
         email: "Email",
         phone: "Phone",
         address: "Address",
-        addressText: "Esentepe Mah. Büyükdere Cad. Loft Residence No: 201 / 40 Şişli, İstanbul, Türkiye",
+        addressText: "Esentepe Mah. Büyükdere Cad. Loft Residence No: 201 / 40 Şişli, Istanbul, Turkey",
       }
     : {
-        title: "Markanızın İleri Seviye AI Potansiyelini Ortaya Çıkarın",
-        description:
-          "Projeler ve iş birlikleri için iletişime geçebilirsiniz.",
-        btn: "Randevu Oluştur",
+        title: "Büyüme Sistemini Birlikte Kuralım",
+        description: "Projeler ve iş birlikleri için iletişime geçebilirsiniz.",
+        bookCall: "Randevu Oluştur",
+        requestAudit: "AI Denetimi Talep Et",
         email: "E-Posta",
         phone: "Telefon",
         address: "Adres",
         addressText: "Esentepe Mah. Büyükdere Cad. Loft Residence No: 201 / 40 Şişli, İstanbul, Türkiye",
       };
 
-  if (pathname === "/contact" || pathname === "/en/contact") {
+  if (!isPage && (pathname === "/contact" || pathname === "/en/contact")) {
     return null;
   }
 
   return (
-    <section className="bg-gray-50 border-t border-gray-100 py-16 md:py-24 px-6 relative overflow-hidden">
+    <section className={`${isPage ? 'w-full py-0' : 'bg-gray-50 border-t border-gray-100 py-16 md:py-24'} px-6 relative overflow-hidden`}>
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -mr-20 -mt-20 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-gray-200 rounded-full blur-3xl opacity-30 -ml-20 -mb-20 pointer-events-none"></div>
 
@@ -47,7 +47,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 w-full md:w-auto bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+        <div className="flex flex-col gap-6 w-full md:max-w-md md:shrink-0 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -81,18 +81,27 @@ export default function ContactSection() {
             </div>
             <div>
               <div className="text-xs text-gray-400 font-semibold uppercase">{text.address}</div>
-              <span className="text-gray-900 font-medium">{text.addressText}</span>
+              <span className="text-gray-900 font-medium block">{text.addressText}</span>
             </div>
           </div>
 
-          <a
-            href="https://calendar.app.google/hjAXB9fuz4cwxXfe7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full mt-4 px-6 py-4 rounded-xl bg-[#0a246b] text-white text-center font-bold hover:bg-[#0a246b]/90 transition-colors"
-          >
-            {text.btn}
-          </a>
+          <div className="flex flex-col gap-3 mt-4 w-full">
+            <a
+              href="https://calendar.app.google/hjAXB9fuz4cwxXfe7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full px-6 py-4 rounded-xl bg-[#0a246b] text-white text-center font-bold transition-transform hover:-translate-y-1"
+            >
+              {text.bookCall}
+            </a>
+
+            <a
+              href="mailto:info@thumbsad.com"
+              className="w-full px-6 py-4 rounded-xl bg-white border-2 border-[#0a246b] text-[#0a246b] text-center font-bold transition-transform hover:-translate-y-1"
+            >
+              {text.requestAudit}
+            </a>
+          </div>
         </div>
       </div>
     </section>

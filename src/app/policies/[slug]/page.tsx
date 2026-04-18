@@ -28,7 +28,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
       content: (
         <>
           <p><strong>Son Güncelleme: 15 Ocak 2026</strong></p>
-          <p>ThumbsAd ("biz", "bize", "bizim") olarak kullanıcılarımızın gizliliğini korumayı taahhüt ediyoruz. Bu Gizlilik Politikası, web sitelerimiz aracılığıyla topladığımız bilgileri, bu bilgilerin nasıl işlendiğini ve nasıl güvence altına alındığını açıklar.</p>
+          <p>ThumbsAd (&quot;biz&quot;, &quot;bize&quot;, &quot;bizim&quot;) olarak kullanıcılarımızın gizliliğini korumayı taahhüt ediyoruz. Bu Gizlilik Politikası, web sitelerimiz aracılığıyla topladığımız bilgileri, bu bilgilerin nasıl işlendiğini ve nasıl güvence altına alındığını açıklar.</p>
           <h3>1. Hangi Verileri Topluyoruz?</h3>
           <p><strong>İletişim Bilgileri:</strong> Ad, soyad, e-posta adresi, telefon numarası.<br/>
           <strong>Teknik Veriler:</strong> IP adresi, tarayıcı bilgileri, cihaz tipi.<br/>
@@ -56,7 +56,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
         <>
           <p>Bu web sitesine erişerek ve kullanarak aşağıdaki Kullanım Şartlarına bağlı kalmayı kabul edersiniz.</p>
           <h3>1. Fikri Mülkiyet ve Marka Kullanımı</h3>
-          <p>Bu sitede yer alan tüm içerik (metinler, görseller, yazılımlar, yapay zeka modelleri ve kodlar dahil) münhasıran ThumbsAd'in mülkiyetindedir. Önceden yazılı izin alınmaksızın çoğaltılması, dağıtılması veya ticari kullanımı kesinlikle yasaktır.</p>
+          <p>Bu sitede yer alan tüm içerik (metinler, görseller, yazılımlar, yapay zeka modelleri ve kodlar dahil) münhasıran ThumbsAd&apos;in mülkiyetindedir. Önceden yazılı izin alınmaksızın çoğaltılması, dağıtılması veya ticari kullanımı kesinlikle yasaktır.</p>
           <h3>2. Sorumluluk Reddi</h3>
           <p>Bu platformda sağlanan bilgiler yalnızca genel bilgilendirme amaçlıdır. Profesyonel yatırım, tıbbi veya yasal bir tavsiye teşkil etmez.</p>
           <h3>3. Yasaklanmış Kullanım</h3>
@@ -87,7 +87,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
           <ul>
             <li>Verilerinize erişme ve düzeltme hakkı.</li>
             <li>İşlemeyi kısıtlama veya itiraz etme hakkı.</li>
-            <li>Silme hakkı ("Unutulma Hakkı").</li>
+            <li>Silme hakkı (&quot;Unutulma Hakkı&quot;).</li>
             <li>Veri taşınabilirliği hakkı.</li>
           </ul>
           <p>Kişisel verileriniz ve KVKK/GDPR kapsamındaki haklarınızla ilgili tüm taleplerinizi <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a> adresine gönderebilirsiniz.</p>
@@ -100,7 +100,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
         <>
           <p>Ajansımız ve ürünlerimiz ile ilgili web sitemizde sağlanan tüm içerikler yalnızca genel bilgilendirme amaçlıdır.</p>
           <h3>1. Garanti Yoktur</h3>
-          <p>Tüm içerik "olduğu gibi" sunulur. ThumbsAd, içgörülerimizin kullanımından elde edilecek özel sonuçlar, başarı veya dönüşüm oranları ile ilgili hiçbir beyan veya garantide bulunmaz.</p>
+          <p>Tüm içerik &quot;olduğu gibi&quot; sunulur. ThumbsAd, içgörülerimizin kullanımından elde edilecek özel sonuçlar, başarı veya dönüşüm oranları ile ilgili hiçbir beyan veya garantide bulunmaz.</p>
           <h3>2. Üçüncü Taraf İçerikleri</h3>
           <p>ThumbsAd, burada bağlantı verilen veya atıfta bulunulan herhangi bir üçüncü taraf web sitesinin içeriği, doğruluğu veya uygulamalarından hiçbir sorumluluk kabul etmez.</p>
           <h3>3. Kullanıcı Sorumluluğu</h3>
@@ -112,7 +112,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
       title: "Telif Hakkı ve Ticari Marka Bildirimi",
       content: (
         <>
-          <p>Bu web sitesindeki içeriğe ilişkin tüm fikri mülkiyet hakları münhasıran <strong>ThumbsAd</strong>'a aittir. <strong>TruOpt.ai</strong> markası, ThumbsAd ekosistemi bünyesinde geliştirilen tescilli bir dijital üründür.</p>
+          <p>Bu web sitesindeki içeriğe ilişkin tüm fikri mülkiyet hakları münhasıran <strong>ThumbsAd</strong>&apos;a aittir. <strong>TruOpt.ai</strong> markası, ThumbsAd ekosistemi bünyesinde geliştirilen tescilli bir dijital üründür.</p>
           <p>Herhangi bir içeriğin izinsiz paylaşılması, çoğaltılması veya ticari kullanımı durumunda yasal işlem başlatılacaktır.</p>
           <ul>
             <li>5846 sayılı Fikir ve Sanat Eserleri Kanunu ile geçerli uluslararası telif hakkı yasaları kapsamında korunmaktadır.</li>
