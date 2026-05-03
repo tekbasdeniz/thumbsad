@@ -15,7 +15,7 @@ export default function ContactSection({ isPage = false }: { isPage?: boolean })
         email: "Email",
         phone: "Phone",
         address: "Address",
-        addressText: "Esentepe Mah. Büyükdere Cad. Loft Residence No: 201 / 40 Şişli, Istanbul, Turkey",
+        addressText: "Esentepe Mah. Büyükdere Cad. NO:193/2 , 34394 , Şişli/İSTANBUL",
       }
     : {
         title: "Büyüme Sistemini Birlikte Kuralım",
@@ -25,7 +25,7 @@ export default function ContactSection({ isPage = false }: { isPage?: boolean })
         email: "E-Posta",
         phone: "Telefon",
         address: "Adres",
-        addressText: "Esentepe Mah. Büyükdere Cad. Loft Residence No: 201 / 40 Şişli, İstanbul, Türkiye",
+        addressText: "Esentepe Mah. Büyükdere Cad. NO:193/2 , 34394 , Şişli/İSTANBUL",
       };
 
   if (!isPage && (pathname === "/contact" || pathname === "/en/contact")) {

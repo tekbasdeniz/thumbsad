@@ -46,7 +46,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
           <p><strong>Veri Sorumlusu:</strong><br/>
           Deniz Tekbaş | ThumbsAd<br/>
           Vergi No: 8330788117 | Zincirlikuyu Vergi Dairesi<br/>
-          Adres: Esentepe Mah. Büyükdere Cad. Loft Residence No:201/40 Şişli/İstanbul, Türkiye</p>
+          Adres: Esentepe Mah. Büyükdere Cad. NO:193/2 , 34394 , Şişli/İSTANBUL</p>
         </>
       )
     },
@@ -128,7 +128,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
   
   if (!policy) {
     return (
-      <div className="w-full min-h-[70vh] flex flex-col items-center bg-white px-6 py-32">
+      <div className="w-full min-h-[70vh] flex flex-col items-center bg-white px-6 py-24 md:py-32">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-8 border-b pb-4">
           Sayfa Bulunamadı
         </h1>
@@ -137,9 +137,9 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
   }
 
   return (
-    <div className="w-full min-h-[70vh] flex flex-col justify-center items-center bg-white px-6 py-32">
+    <div className="w-full min-h-[70vh] flex flex-col justify-center items-center bg-white px-6 py-24 md:py-32">
       <div className="max-w-3xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-12 border-b pb-6">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-8 md:mb-12 border-b pb-6">
           {policy.title}
         </h1>
         <div className="prose prose-lg text-gray-700 space-y-6 [&>h3]:text-2xl [&>h3]:font-bold [&>h3]:text-black [&>h3]:mt-8 [&>h3]:mb-4 [&>p]:leading-relaxed [&>ul]:list-disc [&>ul]:pl-5 [&>ul>li]:mb-2">

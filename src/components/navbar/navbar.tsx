@@ -55,25 +55,25 @@ export default function Navbar() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isVisible ? "translate-y-0" : "-translate-y-full"
         } ${isScrolled
-          ? "bg-[#0a246b] border-white/10 shadow-md py-2 md:py-3"
-          : "bg-[#0a246b] border-transparent py-3 md:py-5"
+          ? "bg-[#0a246b] border-white/10 shadow-md py-1.5 md:py-3"
+          : "bg-[#0a246b] border-transparent py-2 md:py-5"
         }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link
           href={isEn ? "/en" : "/"}
           onClick={() => window.scrollTo(0, 0)}
           className={`transition-all duration-300 hover:opacity-80 block relative mix-blend-lighten ${isScrolled
-              ? "w-[150px] h-[50px] md:w-[280px] md:h-[75px]"
-              : "w-[180px] h-[60px] md:w-[380px] md:h-[105px]"
+              ? "w-[245px] h-[71px] md:w-[280px] md:h-[75px]"
+              : "w-[275px] h-[81px] md:w-[380px] md:h-[105px]"
             }`}
         >
           <Image
             src="/images/thumbsad-logo.webp"
             alt="ThumbsAd Logo"
             fill
-            sizes="(max-width: 768px) 150px, 400px"
+            sizes="(max-width: 768px) 275px, 400px"
             style={{ objectFit: 'contain', objectPosition: 'left center' }}
             priority
           />
@@ -160,7 +160,7 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#0a246b] border-b border-white/10 py-4 px-6 shadow-lg flex flex-col gap-4">
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#0a246b] border-b border-white/10 py-3 px-4 shadow-lg flex flex-col gap-3">
           {links.map((link) => (
             <Link
               key={link.name}

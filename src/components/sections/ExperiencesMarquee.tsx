@@ -18,6 +18,14 @@ const companies = [
   { id: 12, name: "Facebook", src: "/images/facebook.png" },
   { id: 13, name: "Instagram", src: "/images/instagram.png" },
   { id: 14, name: "TikTok", src: "/images/tiktok.webp" },
+  { id: 15, name: "Nobel Ilac", src: "/images/nobel-ilac.png" },
+  { id: 16, name: "Sisecam", src: "/images/Şişecam_logo.svg" },
+  { id: 17, name: "Kariyernet", src: "/images/karıyernet.png" },
+  { id: 18, name: "Yeni Bir Lider", src: "/images/yeni-bir-lider.png" },
+  { id: 19, name: "Tech Istanbul", src: "/images/tech-istanbul_logo-.png" },
+  { id: 20, name: "BTM", src: "/images/btm-logo.png", forceMonochrome: true },
+  { id: 21, name: "GKTR", src: "/images/gktr-logo-light.svg", forceMonochrome: true },
+  { id: 22, name: "Marriott Bonvoy", src: "/images/Marriott_Bonvoy_logo.svg", forceMonochrome: true },
 ];
 
 const marqueeItems = [...companies, ...companies];
@@ -54,6 +62,7 @@ export default function ExperiencesMarquee({
                   src={company.src}
                   alt={`${company.name} logo`}
                   fill
+                  className={company.forceMonochrome ? "brightness-0 contrast-125" : ""}
                   style={{ objectFit: 'contain' }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
