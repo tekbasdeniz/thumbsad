@@ -12,9 +12,9 @@ export default function InsightsSection() {
     const latestPosts = posts.slice(0, 3);
 
     return (
-        <section className="w-full py-24 bg-gray-50 border-t border-gray-100">
+        <section className="w-full py-16 md:py-24 bg-gray-50 border-t border-gray-100">
             <div className="container mx-auto px-6 md:px-12 max-w-7xl">
-                <div className="flex flex-col gap-12">
+                <div className="flex flex-col gap-8 md:gap-12">
                     
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                         <div className="space-y-4 max-w-2xl">

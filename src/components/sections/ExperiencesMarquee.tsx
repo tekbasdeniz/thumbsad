@@ -9,15 +9,15 @@ const companies = [
   { id: 3, name: "Maxi-Cosi", src: "/images/maxi-cosi.png" },
   { id: 4, name: "MTC Game", src: "/images/mtc-game.jpeg" },
   { id: 5, name: "Nobelyum", src: "/images/nobelyum.webp" },
-  { id: 6, name: "Ritz-Carlton", src: "/images/ritz-carlton.png" },
+  { id: 6, name: "The Ritz-Carlton", src: "/images/The_Ritz-Carlton_logo.svg" },
   { id: 7, name: "Tchibo", src: "/images/tchibo.png" },
   { id: 8, name: "W Hotels", src: "/images/w-hotels.png" },
   { id: 9, name: "Eczacıbaşı", src: "/images/eczacıbaşı images.jpeg" },
   { id: 10, name: "TM Marketing", src: "/images/tm-marketing.jpeg" },
-  { id: 11, name: "Google", src: "/images/google.png" },
-  { id: 12, name: "Facebook", src: "/images/facebook.png" },
-  { id: 13, name: "Instagram", src: "/images/instagram.png" },
-  { id: 14, name: "TikTok", src: "/images/tiktok.webp" },
+  { id: 11, name: "Sabancı Üniversitesi", src: "/images/Sabancı_Üniversitesi_logo.svg" },
+  { id: 12, name: "Bahçeşehir Üniversitesi", src: "/images/bau-logo-black.svg" },
+  { id: 13, name: "Bilgi Üniversitesi", src: "/images/bilgi-universitesi-logo-.png" },
+  { id: 14, name: "Biruni Üniversitesi", src: "/images/biruni-universitesi-logo.svg" },
   { id: 15, name: "Nobel Ilac", src: "/images/nobel-ilac.png" },
   { id: 16, name: "Sisecam", src: "/images/Şişecam_logo.svg" },
   { id: 17, name: "Kariyernet", src: "/images/karıyernet.png" },
@@ -26,6 +26,9 @@ const companies = [
   { id: 20, name: "BTM", src: "/images/btm-logo.png", forceMonochrome: true },
   { id: 21, name: "GKTR", src: "/images/gktr-logo-light.svg", forceMonochrome: true },
   { id: 22, name: "Marriott Bonvoy", src: "/images/Marriott_Bonvoy_logo.svg", forceMonochrome: true },
+  { id: 23, name: "Boğaziçi Üniversitesi", src: "/images/bogazici-universitesi-logo-.png" },
+  { id: 24, name: "Yeditepe Üniversitesi", src: "/images/yeditepe-universitesi-logo.svg" },
+  { id: 25, name: "Yıldız Teknik Üniversitesi", src: "/images/yıldız-teknik-universitesi-logo.svg" },
 ];
 
 const marqueeItems = [...companies, ...companies];
@@ -41,7 +44,7 @@ export default function ExperiencesMarquee({
   const isEn = pathname.startsWith("/en");
 
   return (
-    <div className="w-full overflow-hidden bg-gray-50 py-24 border-y border-gray-100 flex flex-col items-center gap-12">
+    <div className="w-full overflow-hidden bg-gray-50 py-16 md:py-24 border-y border-gray-100 flex flex-col items-center gap-8 md:gap-12">
       {!hideHeader && (
         <div className="flex flex-col items-center gap-4 text-center px-6">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">

@@ -93,9 +93,9 @@ const Solutions = ({ isHome = false }: SolutionsProps) => {
     const displayItems: SolutionItem[] = isHome ? currentItems.slice(0, 4) : currentItems;
 
     return (
-        <section className="w-full py-24 border-t border-gray-100 bg-white">
+        <section className="w-full py-16 md:py-24 border-t border-gray-100 bg-white">
             <div className="container mx-auto px-6 md:px-12">
-                <div className="flex flex-col gap-16">
+                <div className="flex flex-col gap-10 md:gap-16">
                     {/* Üst Kısım: Başlık ve Açıklama */}
                     <div className="flex flex-col items-center text-center gap-6">
                         <div className="space-y-4 max-w-2xl">

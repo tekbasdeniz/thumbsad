@@ -7,13 +7,13 @@ const Hero = () => {
     const isEn = pathname.startsWith("/en");
 
     return (
-        <section className="w-full flex items-center justify-center bg-white px-6 pt-32 pb-16 md:pt-40 md:pb-24 min-h-[60vh] md:min-h-[70vh]">
+        <section className="w-full flex items-center justify-center bg-white px-6 pt-24 pb-12 md:pt-40 md:pb-24 min-h-[60vh] md:min-h-[70vh]">
             <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 md:gap-8">
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-normal md:tracking-tighter text-black md:leading-tight px-2">
                     {isEn
-                        ? "AI Growth Systems for Enterprise Scale"
-                        : "Kurumsal Ölçek İçin Yapay Zeka Tabanlı Büyüme Sistemleri"
+                        ? "AI-Powered Growth Systems for Corporate Success"
+                        : "Kurumsal Başarı için Yapay Zeka Destekli Büyüme Sistemleri"
                     }
                 </h1>
 
