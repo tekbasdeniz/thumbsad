@@ -10,8 +10,15 @@ import { getLocalizedPostsQuery } from "@/sanity/lib/queries";
 export const revalidate = 60;
 
 export default async function HomePageTr() {
-  const posts = await client.fetch(getLocalizedPostsQuery, { lang: 'tr' });
-  const latestPosts = (posts || []).slice(0, 3);
+  let posts: any[] = [];
+  try {
+    const fetched = await client.fetch(getLocalizedPostsQuery, { lang: 'tr' });
+    posts = Array.isArray(fetched) ? fetched : [];
+  } catch (error) {
+    console.error("Sanity fetch error in HomePageTr:", error);
+    posts = [];
+  }
+  const latestPosts = posts.slice(0, 3);
 
   return (
     <div className="flex flex-col w-full">

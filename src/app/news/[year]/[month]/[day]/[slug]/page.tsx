@@ -21,35 +21,67 @@ interface PageProps {
 export async function generateStaticParams() {
     try {
         const posts = await client.fetch(getAllPostPathsQuery);
-        return (posts || []).map((post: any) => {
-            const d = post.publishedAt ? new Date(post.publishedAt) : (post._createdAt ? new Date(post._createdAt) : new Date());
-            const year = String(d.getUTCFullYear());
-            const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-            const day = String(d.getUTCDate()).padStart(2, '0');
-            const slug = typeof post.slug === 'string' ? post.slug : post.slug?.current || '';
-            return { year, month, day, slug: slug.trim() };
-        });
-    } catch {
+        if (!Array.isArray(posts)) return [];
+
+        return posts
+            .map((post: any) => {
+                if (!post) return null;
+
+                const rawDate = post?.publishedAt || post?._createdAt;
+                const d = rawDate ? new Date(rawDate) : new Date();
+                
+                if (isNaN(d.getTime())) return null;
+
+                const year = String(d.getUTCFullYear());
+                const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+                const day = String(d.getUTCDate()).padStart(2, '0');
+                const rawSlug = typeof post?.slug === 'string' ? post.slug : post?.slug?.current || '';
+                const slug = typeof rawSlug === 'string' ? rawSlug.trim() : '';
+
+                if (!slug || !year || !month || !day) return null;
+
+                return { year, month, day, slug };
+            })
+            .filter((item): item is { year: string; month: string; day: string; slug: string } => 
+                Boolean(item && item.slug && item.year && item.month && item.day)
+            );
+    } catch (error) {
+        console.error('Error generating static params for news (TR):', error);
         return [];
     }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { year, month, day, slug } = await params;
-    const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'tr', slug: slug });
-    if (!post) {
-        return { title: 'Haber Bulunamadı | ThumbsAd' };
+    try {
+        const { slug } = await params;
+        if (!slug) return { title: 'Haber Bulunamadı | ThumbsAd' };
+
+        const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'tr', slug: slug });
+        if (!post) {
+            return { title: 'Haber Bulunamadı | ThumbsAd' };
+        }
+        return {
+            title: `${post?.title || 'Haberler'} | ThumbsAd Haberler`,
+            description: post?.excerpt_tr || post?.excerpt || undefined,
+        };
+    } catch (error) {
+        console.error('Error generating metadata for news detail (TR):', error);
+        return { title: 'Haberler | ThumbsAd' };
     }
-    return {
-        title: `${post.title} | ThumbsAd Haberler`,
-        description: post.excerpt_tr || post.excerpt || undefined,
-    };
 }
 
 export default async function Page({ params }: PageProps) {
     const { year, month, day, slug } = await params;
     
-    const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'tr', slug: slug });
+    let post: any = null;
+    try {
+        if (slug) {
+            post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'tr', slug: slug });
+        }
+    } catch (error) {
+        console.error('Sanity fetch error on news detail page (TR):', error);
+        post = null;
+    }
 
     if (!post) {
         return (
@@ -63,15 +95,31 @@ export default async function Page({ params }: PageProps) {
     }
 
     // 5 Temel Alan (Dilli): category_tr, title, excerpt_tr, author, publishedAt
-    const categoryName = post.category_tr || post.category || post.categories?.[0]?.title || 'Haberler';
-    const title = post.title || 'Başlıksız';
-    const excerpt = post.excerpt_tr || post.excerpt || '';
-    const authorName = post.author || 'ThumbsAd';
-    const formattedDate = post.publishedAt 
-        ? new Date(post.publishedAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })
-        : `${year}-${month}-${day}`;
+    const categoryName = post?.category_tr || post?.category || post?.categories?.[0]?.title || 'Haberler';
+    const title = post?.title || 'Başlıksız';
+    const excerpt = post?.excerpt_tr || post?.excerpt || '';
+    const authorName = post?.author || 'ThumbsAd';
+    
+    let formattedDate = `${year}-${month}-${day}`;
+    if (post?.publishedAt) {
+        try {
+            const dateObj = new Date(post.publishedAt);
+            if (!isNaN(dateObj.getTime())) {
+                formattedDate = dateObj.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+            }
+        } catch {
+            formattedDate = `${year}-${month}-${day}`;
+        }
+    }
 
-    const imageUrl = post.mainImage?.asset ? urlFor(post.mainImage).url() : null;
+    let imageUrl: string | null = null;
+    if (post?.mainImage?.asset) {
+        try {
+            imageUrl = urlFor(post.mainImage).url();
+        } catch {
+            imageUrl = null;
+        }
+    }
 
     return (
         <main className="w-full bg-white">
@@ -87,11 +135,11 @@ export default async function Page({ params }: PageProps) {
                 </h1>
 
                 {/* 3. Altında Türkçe Özet (excerpt_tr) */}
-                {excerpt && (
+                {excerpt ? (
                     <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed mb-6">
                         {excerpt}
                     </p>
-                )}
+                ) : null}
 
                 {/* 4. Onun altında sol tarafta Yazar adı, sağ tarafta Tarih */}
                 <div className="flex justify-between items-center border-y border-gray-200 py-3 my-6 text-sm text-gray-600 font-medium">
@@ -115,9 +163,10 @@ export default async function Page({ params }: PageProps) {
 
                 {/* 6. Prose zengin metin alanı */}
                 <div className="prose dark:prose-invert max-w-none text-gray-800">
-                    <SanityContent value={post.content} />
+                    <SanityContent value={post?.content} />
                 </div>
             </article>
         </main>
     );
 }
+

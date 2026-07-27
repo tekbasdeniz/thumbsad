@@ -26,7 +26,17 @@ function getSlugString(slugProp: any): string {
 }
 
 function getDateParts(publishedAt?: string, createdAt?: string) {
-    const d = publishedAt ? new Date(publishedAt) : (createdAt ? new Date(createdAt) : new Date());
+    let d: Date;
+    if (publishedAt) {
+        d = new Date(publishedAt);
+    } else if (createdAt) {
+        d = new Date(createdAt);
+    } else {
+        d = new Date();
+    }
+    if (isNaN(d.getTime())) {
+        d = new Date();
+    }
     const year = String(d.getUTCFullYear());
     const month = String(d.getUTCMonth() + 1).padStart(2, '0');
     const day = String(d.getUTCDate()).padStart(2, '0');
@@ -34,51 +44,64 @@ function getDateParts(publishedAt?: string, createdAt?: string) {
 }
 
 export default function BlogCard({ post, isEn, lang }: BlogCardProps) {
+    if (!post) return null;
+
     // Active language determination
     const isEnglish = lang ? lang === "en" : Boolean(isEn);
 
     // Dynamic slug & href construction (/news or /en/news)
-    const slug = getSlugString(post.slug);
-    const { year, month, day } = getDateParts(post.publishedAt, post._createdAt);
+    const slug = getSlugString(post?.slug);
+    const { year, month, day } = getDateParts(post?.publishedAt, post?._createdAt);
     const href = isEnglish 
         ? `/en/news/${year}/${month}/${day}/${slug}` 
         : `/news/${year}/${month}/${day}/${slug}`;
 
     // Language-aware fields (title, excerpt, category)
-    const title = post.title || (isEnglish ? post.en?.title : post.tr?.title) || "Başlıksız";
+    const title = post?.title || (isEnglish ? post?.en?.title : post?.tr?.title) || (isEnglish ? "Untitled" : "Başlıksız");
     const excerpt = isEnglish 
-        ? (post.excerpt_en || post.excerpt || post.en?.description || "")
-        : (post.excerpt_tr || post.excerpt || post.tr?.description || "");
+        ? (post?.excerpt_en || post?.excerpt || post?.en?.description || "")
+        : (post?.excerpt_tr || post?.excerpt || post?.tr?.description || "");
     const category = isEnglish
-        ? (post.category_en || post.category || "News")
-        : (post.category_tr || post.category || "Haberler");
+        ? (post?.category_en || post?.category || "News")
+        : (post?.category_tr || post?.category || "Haberler");
     
     // Image resolution
     let imageUrl = "/placeholder.jpg";
-    if (post.mainImage?.asset) {
-        imageUrl = urlFor(post.mainImage).url();
-    } else if (typeof post.image === "string") {
+    if (post?.mainImage?.asset) {
+        try {
+            imageUrl = urlFor(post.mainImage).url();
+        } catch {
+            imageUrl = "/placeholder.jpg";
+        }
+    } else if (typeof post?.image === "string") {
         imageUrl = post.image;
     }
 
     // Reading time
-    const rawReadingTime = post.readingTime || (isEnglish ? post.en?.readingTime : post.tr?.readingTime);
+    const rawReadingTime = post?.readingTime || (isEnglish ? post?.en?.readingTime : post?.tr?.readingTime);
     const readingTime = rawReadingTime 
         ? typeof rawReadingTime === "number" 
             ? `${rawReadingTime} ${isEnglish ? "min" : "dk"}` 
-            : rawReadingTime 
+            : String(rawReadingTime)
         : null;
 
     // Date formatting
     let formattedDate = "";
-    if (post.publishedAt) {
-        formattedDate = new Date(post.publishedAt).toLocaleDateString(isEnglish ? "en-US" : "tr-TR", {
-            day: "numeric",
-            month: "short",
-            year: "numeric"
-        });
-    } else if (post.tr?.date || post.en?.date) {
-        formattedDate = isEnglish ? post.en?.date : post.tr?.date;
+    if (post?.publishedAt) {
+        try {
+            const dateObj = new Date(post.publishedAt);
+            if (!isNaN(dateObj.getTime())) {
+                formattedDate = dateObj.toLocaleDateString(isEnglish ? "en-US" : "tr-TR", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                });
+            }
+        } catch {
+            formattedDate = "";
+        }
+    } else if (post?.tr?.date || post?.en?.date) {
+        formattedDate = isEnglish ? post?.en?.date || "" : post?.tr?.date || "";
     }
 
     // Combine date & reading time
@@ -127,3 +150,4 @@ export default function BlogCard({ post, isEn, lang }: BlogCardProps) {
         </Link>
     );
 }
+

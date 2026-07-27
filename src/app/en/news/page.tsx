@@ -11,7 +11,14 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function NewsPageEn() {
-    const posts = await client.fetch(getLocalizedPostsQuery, { lang: 'en' });
+    let posts: any[] = [];
+    try {
+        const fetched = await client.fetch(getLocalizedPostsQuery, { lang: 'en' });
+        posts = Array.isArray(fetched) ? fetched : [];
+    } catch (error) {
+        console.error('Sanity fetch error in NewsPageEn:', error);
+        posts = [];
+    }
 
     return (
         <main className="w-full bg-white">
@@ -30,8 +37,8 @@ export default async function NewsPageEn() {
                 <div className="max-w-7xl mx-auto">
                     {posts && posts.length > 0 ? (
                         <div className="max-w-4xl mx-auto flex flex-col gap-6">
-                            {posts.map((post: any) => (
-                                <BlogCard key={post._id || post.slug} post={post} lang="en" />
+                            {posts.map((post: any, index: number) => (
+                                <BlogCard key={post?._id || post?.slug || index} post={post} lang="en" />
                             ))}
                         </div>
                     ) : (
@@ -44,3 +51,4 @@ export default async function NewsPageEn() {
         </main>
     );
 }
+

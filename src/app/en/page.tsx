@@ -16,8 +16,15 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function HomePageEn() {
-  const posts = await client.fetch(getLocalizedPostsQuery, { lang: 'en' });
-  const latestPosts = (posts || []).slice(0, 3);
+  let posts: any[] = [];
+  try {
+    const fetched = await client.fetch(getLocalizedPostsQuery, { lang: 'en' });
+    posts = Array.isArray(fetched) ? fetched : [];
+  } catch (error) {
+    console.error("Sanity fetch error in HomePageEn:", error);
+    posts = [];
+  }
+  const latestPosts = posts.slice(0, 3);
 
   return (
     <div className="flex flex-col w-full">
