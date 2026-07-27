@@ -1,10 +1,11 @@
-
 import ExperiencesMarquee from "@/components/sections/ExperiencesMarquee";
 import TruOptSection from "@/components/sections/TruOptSection";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Solutions from "@/components/sections/Solutions";
 import InsightsSection from "@/components/sections/InsightsSection";
+import { client } from "@/sanity/lib/client";
+import { getLocalizedPostsQuery } from "@/sanity/lib/queries";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +13,12 @@ export const metadata: Metadata = {
   description: "A project-oriented structure that brings together growth strategy, artificial intelligence systems, and implementation.",
 };
 
-export default function HomePageEn() {
+export const revalidate = 60;
+
+export default async function HomePageEn() {
+  const posts = await client.fetch(getLocalizedPostsQuery, { lang: 'en' });
+  const latestPosts = (posts || []).slice(0, 3);
+
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
@@ -21,14 +27,14 @@ export default function HomePageEn() {
       {/* About Preview */}
       <About />
 
+      {/* Experiences Preview (Logo Marquee between About and Solutions) */}
+      <ExperiencesMarquee />
+
       {/* Solutions Preview */}
       <Solutions isHome={true} />
 
       {/* Insights Section */}
-      <InsightsSection />
-
-      {/* Experiences Preview */}
-      <ExperiencesMarquee />
+      <InsightsSection posts={latestPosts} lang="en" />
 
       {/* TruOpt Section */}
       <TruOptSection />

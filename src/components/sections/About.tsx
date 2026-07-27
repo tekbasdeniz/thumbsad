@@ -3,64 +3,86 @@
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
+const CheckIcon = () => (
+    <svg className="w-5 h-5 text-[#0a246b] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+    </svg>
+);
+
 const About = () => {
     const pathname = usePathname() || "";
     const isEn = pathname.startsWith("/en");
 
+    const pillars = isEn
+        ? [
+            "Growth Consulting",
+            "Tailored Integrated Solutions",
+            "AI-Powered Organizational Transformation",
+            "Intelligent Automation & Education-Driven Outcomes"
+        ]
+        : [
+            "Growth Consulting",
+            "İhtiyaca Özel Entegre Çözümler",
+            "Yapay Zeka Destekli Yapısal Dönüşüm",
+            "Akıllı Otomasyon ve Eğitim Odaklı Sonuçlar"
+        ];
+
     return (
-        <section className="w-full py-16 md:py-28 bg-gray-50 border-t border-gray-100">
-            <div className="max-w-5xl mx-auto px-6 md:px-12">
-                <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
+        <section id="about" className="w-full py-16 md:py-24 bg-slate-50 border-t border-gray-100 text-gray-900">
+            <div className="max-w-6xl mx-auto px-6 md:px-12 space-y-12">
+                
+                {/* 2 Kolon Grid - Esnek Yükseklik Eşitleme (items-stretch) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
                     
-                    {/* What is ThumbsAd */}
-                    <div className="flex-1 space-y-6">
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
-                            {isEn ? "What is ThumbsAd" : "ThumbsAd Nedir?"}
+                    {/* Sol Kolon: What is ThumbsAd? */}
+                    <div className="lg:col-span-6 flex flex-col text-center">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 leading-tight mb-6">
+                            {isEn ? "What is ThumbsAd?" : "ThumbsAd Nedir?"}
                         </h2>
-                        <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light">
-                            {isEn
-                                ? "ThumbsAd is an AI-powered technology partner helping enterprise brands optimize marketing, improve efficiency, and build scalable growth systems."
-                                : "ThumbsAd, kurumsal markaların pazarlama performansını optimize eden, verimliliğini artıran ve ölçeklenebilir büyüme sistemleri kuran yapay zeka partneridir."
-                            }
-                        </p>
+                        <div className="flex-1 flex items-center justify-center">
+                            <p className="text-base sm:text-lg md:text-lg font-normal text-gray-700 leading-relaxed text-center max-w-[460px] mx-auto">
+                                {isEn
+                                    ? "ThumbsAd is an AI Growth Partner that designs, implements, and scales artificial intelligence, marketing, automation, and digital transformation solutions under one unified ecosystem to accelerate the growth of enterprise companies."
+                                    : "ThumbsAd, kurumsal şirketlerin büyümesini hızlandırmak için yapay zekâ, pazarlama, otomasyon ve dijital dönüşümü tek çatı altında tasarlayan, uygulayan ve hayata geçiren bir AI Growth Partner’dır."
+                                }
+                            </p>
+                        </div>
                     </div>
 
-                    {/* Why ThumbsAd (List) */}
-                    <div className="flex-1 space-y-6">
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
-                            {isEn ? "Why ThumbsAd" : "Neden ThumbsAd"}
-                        </h2>
-                        <ul className="space-y-4">
-                            {[
-                                { en: "KPI-driven execution", tr: "KPI Odaklı Yürütme" },
-                                { en: "AI-powered decision systems", tr: "Yapay Zeka Odaklı Karar Sistemleri" },
-                                { en: "Tailor-made solutions", tr: "İhtiyaca Özel Çözümler" },
-                                { en: "Measurable results", tr: "Ölçülebilir Sonuçlar" }
-                            ].map((item, index) => (
-                                <li key={index} className="flex items-center gap-4 text-lg md:text-xl font-medium text-gray-700">
-                                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[#0a246b]">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
-                                            <polyline points="20 6 9 17 4 12" />
-                                        </svg>
-                                    </div>
-                                    {isEn ? item.en : item.tr}
-                                </li>
-                            ))}
-                        </ul>
+                    {/* Sağ Kolon: Why ThumbsAd (4 Madde dikeyde tam eşleşir) */}
+                    <div className="lg:col-span-6 flex flex-col text-center">
+                        <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 leading-tight mb-6">
+                            Why ThumbsAd
+                        </h3>
+                        <div className="flex-1 flex items-center justify-center w-full">
+                            <ul className="flex flex-col justify-between text-left max-w-[460px] w-full h-full py-1 space-y-3">
+                                {pillars.map((title, idx) => (
+                                    <li key={idx} className="flex items-center space-x-3">
+                                        <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100/80 flex items-center justify-center">
+                                            <CheckIcon />
+                                        </span>
+                                        <span className="text-base sm:text-lg md:text-lg font-normal text-gray-700 leading-snug">
+                                            {title}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
 
-                {/* Buton - Ortalanmış */}
-                <div className="pt-12 md:pt-24 mt-8 flex justify-center items-center w-full">
+                {/* Buton: Yazıların altında ve ortada */}
+                <div className="flex justify-center items-center w-full pt-4">
                     <Link
                         href={isEn ? "/en/about" : "/about"}
-                        className="inline-flex items-center justify-center text-white bg-[#0a246b] px-8 py-4 rounded-full font-semibold transition-transform hover:-translate-y-1 hover:shadow-lg text-lg group"
+                        className="inline-flex items-center justify-center text-white bg-[#0a246b] hover:bg-[#123999] px-8 py-4 rounded-full font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg text-base sm:text-lg group"
                     >
                         {isEn ? "Discover more" : "Daha fazlasını keşfedin"} 
                         <span className="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
                     </Link>
                 </div>
+
             </div>
         </section>
     );

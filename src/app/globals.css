@@ -30,4 +30,45 @@ body {
     animation: marquee 42s linear infinite;
     width: max-content;
   }
+
+  /* Hero Button Light Glow Effects */
+  .hero-glow-btn {
+    background: linear-gradient(145deg, #2e2d2d, #212121);
+    border: 1px solid #404c5d;
+    box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+      inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+    transition: all 500ms ease;
+  }
+
+  .hero-glow-btn:hover {
+    box-shadow: 1px 1px 13px #20232e, -1px -1px 13px #545b78;
+    color: #d6d6d6;
+    transition: all 500ms ease;
+  }
+
+  .hero-glow-btn:active {
+    box-shadow: 1px 1px 13px #20232e, -1px -1px 33px #545b78;
+    color: #d6d6d6;
+    transition: all 100ms ease;
+  }
+
+  .hero-glow-btn-primary {
+    background: linear-gradient(145deg, #0e2e85, #081d54);
+    border: 1px solid #2d4c9e;
+    box-shadow: -1px -5px 15px #1e3a8a, 5px 5px 15px #1e3a8a,
+      inset 5px 5px 10px #081d54, inset -5px -5px 10px #081d54;
+    transition: all 500ms ease;
+  }
+
+  .hero-glow-btn-primary:hover {
+    box-shadow: 1px 1px 13px #0f172a, -1px -1px 15px #3b82f6;
+    color: #ffffff;
+    transition: all 500ms ease;
+  }
+
+  .hero-glow-btn-primary:active {
+    box-shadow: 1px 1px 13px #0f172a, -1px -1px 33px #60a5fa;
+    color: #ffffff;
+    transition: all 100ms ease;
+  }
 }

@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ThumbsAd | İleri Düzey Dijital Projeler İçin AI Growth Partner",
   description: "Büyüme stratejisi, yapay zeka sistemleri ve uygulamayı bir araya getiren proje odaklı yapı.",
+  icons: {
+    icon: "/images/thumbsad-logo.webp",
+    shortcut: "/images/thumbsad-logo.webp",
+    apple: "/images/thumbsad-logo.webp",
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +35,11 @@ export default function RootLayout({
       lang="tr"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
+      <head>
+        <link rel="icon" href="/images/thumbsad-logo.webp" type="image/webp" sizes="any" />
+        <link rel="shortcut icon" href="/images/thumbsad-logo.webp" type="image/webp" />
+        <link rel="apple-touch-icon" href="/images/thumbsad-logo.webp" />
+      </head>
       <body className="min-h-screen flex flex-col font-sans bg-white selection:bg-black selection:text-white">
         <Navbar />
         <main className="flex-1 pt-24">{children}</main>
