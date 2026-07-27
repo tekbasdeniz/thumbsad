@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { getLocalizedPostBySlugQuery, getAllPostPathsQuery } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/image';
@@ -26,24 +27,19 @@ export async function generateStaticParams() {
         return posts
             .map((post: any) => {
                 if (!post) return null;
+                const rawDate = post.publishedAt || post._createdAt;
+                const date = rawDate ? new Date(rawDate) : new Date();
+                if (isNaN(date.getTime())) return null;
 
-                const rawDate = post?.publishedAt || post?._createdAt;
-                const d = rawDate ? new Date(rawDate) : new Date();
-                
-                if (isNaN(d.getTime())) return null;
-
-                const year = String(d.getUTCFullYear());
-                const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-                const day = String(d.getUTCDate()).padStart(2, '0');
-                const rawSlug = typeof post?.slug === 'string' ? post.slug : post?.slug?.current || '';
-                const slug = typeof rawSlug === 'string' ? rawSlug.trim() : '';
-
-                if (!slug || !year || !month || !day) return null;
+                const slug = String(post.slug?.current || post.slug || '').trim();
+                const year = String(date.getUTCFullYear());
+                const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                const day = String(date.getUTCDate()).padStart(2, '0');
 
                 return { year, month, day, slug };
             })
-            .filter((item): item is { year: string; month: string; day: string; slug: string } => 
-                Boolean(item && item.slug && item.year && item.month && item.day)
+            .filter((p): p is { year: string; month: string; day: string; slug: string } => 
+                Boolean(p && p.slug && p.year && p.month && p.day)
             );
     } catch (error) {
         console.error('Error generating static params for news (EN):', error);
@@ -53,10 +49,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     try {
-        const { slug } = await params;
-        if (!slug) return { title: 'News Not Found | ThumbsAd' };
+        const resolvedParams = await params;
+        if (!resolvedParams?.slug || !resolvedParams?.year || !resolvedParams?.month || !resolvedParams?.day) {
+            return { title: 'News Not Found | ThumbsAd' };
+        }
 
-        const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'en', slug: slug });
+        const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'en', slug: resolvedParams.slug });
         if (!post) {
             return { title: 'News Not Found | ThumbsAd' };
         }
@@ -71,27 +69,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function Page({ params }: PageProps) {
-    const { year, month, day, slug } = await params;
-    
+    const resolvedParams = await params;
+    const { year, month, day, slug } = resolvedParams || {};
+
+    if (!slug || !year || !month || !day) {
+        notFound();
+    }
+
     let post: any = null;
     try {
-        if (slug) {
-            post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'en', slug: slug });
-        }
+        post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'en', slug: slug });
     } catch (error) {
         console.error('Sanity fetch error on news detail page (EN):', error);
         post = null;
     }
 
     if (!post) {
-        return (
-            <main className="w-full bg-white py-32 px-6 text-center">
-                <div className="max-w-xl mx-auto bg-red-50 border border-red-200 rounded-2xl p-8 text-red-700">
-                    <h2 className="text-xl font-bold mb-2">Data not found (EN)</h2>
-                    <p className="text-sm">Route: <code className="font-mono bg-red-100 px-2 py-1 rounded">/en/news/{year}/{month}/{day}/{slug}</code></p>
-                </div>
-            </main>
-        );
+        notFound();
     }
 
     // 5 Core Fields (Localized): category_en, title, excerpt_en, author, publishedAt
@@ -169,4 +163,3 @@ export default async function Page({ params }: PageProps) {
         </main>
     );
 }
-
