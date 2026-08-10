@@ -48,7 +48,7 @@ const Hero = () => {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mt-8 w-full">
                     <a
-                        href="https://calendar.app.google/hjAXB9fuz4cwxXfe7"
+                        href="https://calendar.app.google/7PxGKBLEwroNzWcK9"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hero-glow-btn-primary w-full sm:w-auto px-8 py-4 rounded-full text-white font-semibold flex items-center justify-center gap-3 text-lg"

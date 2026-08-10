@@ -87,7 +87,7 @@ export default function ContactSection({ isPage = false }: { isPage?: boolean })
 
           <div className="flex flex-col gap-3 mt-4 w-full">
             <a
-              href="https://calendar.app.google/hjAXB9fuz4cwxXfe7"
+              href="https://calendar.app.google/7PxGKBLEwroNzWcK9"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full px-6 py-4 rounded-xl bg-[#0a246b] text-white text-center font-bold transition-transform hover:-translate-y-1"
