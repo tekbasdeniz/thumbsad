@@ -49,12 +49,12 @@ export default function BlogCard({ post, isEn, lang }: BlogCardProps) {
     // Active language determination
     const isEnglish = lang ? lang === "en" : Boolean(isEn);
 
-    // Dynamic slug & href construction (/news or /en/news)
+    // Dynamic slug & href construction (/insights or /en/insights)
     const slug = getSlugString(post?.slug);
     const { year, month, day } = getDateParts(post?.publishedAt, post?._createdAt);
     const href = isEnglish 
-        ? `/en/news/${year}/${month}/${day}/${slug}` 
-        : `/news/${year}/${month}/${day}/${slug}`;
+        ? `/en/insights/${year}/${month}/${day}/${slug}` 
+        : `/insights/${year}/${month}/${day}/${slug}`;
 
     // Language-aware fields (title, excerpt, category)
     const title = post?.title || (isEnglish ? post?.en?.title : post?.tr?.title) || (isEnglish ? "Untitled" : "Başlıksız");
@@ -62,8 +62,8 @@ export default function BlogCard({ post, isEn, lang }: BlogCardProps) {
         ? (post?.excerpt_en || post?.excerpt || post?.en?.description || "")
         : (post?.excerpt_tr || post?.excerpt || post?.tr?.description || "");
     const category = isEnglish
-        ? (post?.category_en || post?.category || "News")
-        : (post?.category_tr || post?.category || "Haberler");
+        ? (post?.category_en || post?.category || "Insights")
+        : (post?.category_tr || post?.category || "İçgörüler");
     
     // Image resolution
     let imageUrl = "/placeholder.jpg";

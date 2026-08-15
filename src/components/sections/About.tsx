@@ -21,7 +21,7 @@ const About = () => {
             "Intelligent Automation & Education-Driven Outcomes"
         ]
         : [
-            "Growth Consulting",
+            "Şirketlere Büyüme Danışmanlığı",
             "İhtiyaca Özel Entegre Çözümler",
             "Yapay Zeka Destekli Yapısal Dönüşüm",
             "Akıllı Otomasyon ve Eğitim Odaklı Sonuçlar"
@@ -52,7 +52,7 @@ const About = () => {
                     {/* Sağ Kolon: Why ThumbsAd (4 Madde dikeyde tam eşleşir) */}
                     <div className="lg:col-span-6 flex flex-col text-center">
                         <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 leading-tight mb-6">
-                            Why ThumbsAd
+                            {isEn ? "Why ThumbsAd" : "Neden ThumbsAd"}
                         </h3>
                         <div className="flex-1 flex items-center justify-center w-full">
                             <ul className="flex flex-col justify-between text-left max-w-[460px] w-full h-full py-1 space-y-3">

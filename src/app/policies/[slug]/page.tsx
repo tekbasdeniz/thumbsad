@@ -70,27 +70,74 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
       title: "Veri Koruma ve Gizlilik",
       content: (
         <>
-          <p><strong>Veri Sorumlusu:</strong> ThumbsAd – Deniz Tekbaş</p>
-          <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) ve Genel Veri Koruma Yönetmeliği (“GDPR”) uyarınca kişisel verileriniz, veri sorumlusu olarak tarafımızca aşağıda açıklanan kapsamda işlenmektedir.</p>
-          <h3>1. İşlenen Veri Kategorileri</h3>
-          <p><strong>Kimlik ve İletişim Bilgileri:</strong> Ad, soyad, e-posta adresi, telefon numarası.<br/>
-          <strong>İşlem Güvenliği:</strong> IP adresi, oturum günlükleri ve trafik verileri.</p>
-          <h3>2. İşleme Amaçları</h3>
+          <h3>1. Veri Sorumlusu ve Kapsam</h3>
+          <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında kişisel verileriniz, Deniz Tekbaş | ThumbsAd (“ThumbsAd”) tarafından veri sorumlusu sıfatıyla işlenmektedir. TruOpt.ai, ThumbsAd tarafından geliştirilen ve sunulan bir ürün/hizmettir; ayrı bir veri sorumlusu değildir.</p>
+          <p>
+            <strong>Vergi Bilgileri:</strong> Vergi No: 8330788117 | Zincirlikuyu Vergi Dairesi<br/>
+            <strong>Adres:</strong> Esentepe Mah. Büyükdere Cad. No: 193/2, 34394 Şişli/İstanbul<br/>
+            <strong>E-posta:</strong> <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a><br/>
+            <strong>Telefon:</strong> +90 212 955 00 63<br/>
+            <strong>Web siteleri:</strong> <a href="https://thumbsad.com" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://thumbsad.com</a> ve <a href="https://truopt.ai" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://truopt.ai</a>
+          </p>
+          <p>Bu Aydınlatma Metni; ThumbsAd ve TruOpt.ai web siteleri, ThumbsAd Insights topluluk üyeliği, bülten ve etkinlik kayıtları, TruOpt.ai ürün araştırması, erken erişim, demo ve benzeri iletişim formları üzerinden elde edilen kişisel verileri kapsar.</p>
+
+          <h3>2. İşlenen Kişisel Veriler</h3>
+          <p>İlgili forma ve kullanıcı tarafından paylaşılan bilgilere göre aşağıdaki kişisel veriler işlenebilir:</p>
           <ul>
-            <li>Web sitesi hizmetlerinin sağlanması ve yürütülmesi.</li>
-            <li>Kampanya, bülten ve bilgilendirme mesajlarının gönderilmesi (açık rızaya dayalı olarak).</li>
-            <li>Hizmet sonrası destek, faturalandırma ve yasal uyumluluk.</li>
+            <li><strong>Kimlik bilgileri:</strong> ad ve soyad.</li>
+            <li><strong>İletişim bilgileri:</strong> e-posta adresi ve kullanıcı tarafından ayrıca paylaşılması hâlinde telefon numarası.</li>
+            <li><strong>Talep ve ürün araştırması bilgileri:</strong> kurum/şirket türü, reklam bütçesi aralığı, kullanılan reklam platformları, ihtiyaçlar, sorunlar, özellik talepleri, demo veya erken erişim tercihleri.</li>
+            <li><strong>Pazarlama ve izin bilgileri:</strong> iletişim tercihi, izin/onay durumu, izin tarihi ve saati, izin metni versiyonu ve ret/abonelikten çıkma kayıtları.</li>
+            <li><strong>İşlem ve kaynak bilgileri:</strong> kayıt tarihi ve saati, kayıt kaynağı, kaynak sayfa adresi ve UTM source/medium/campaign bilgileri.</li>
+            <li><strong>İletişim kayıtları:</strong> tarafımıza iletilen talep, görüş, geri bildirim ve yazışmalar.</li>
           </ul>
-          <h3>3. Veri Paylaşımı ve Aktarımı</h3>
-          <p>Verileriniz, KVKK ve GDPR aktarım düzenlemelerine uygun olarak, kesinlikle sunucu/barındırma sağlayıcıları, e-posta hizmeti altyapıları ve yasalar gerektirdiğinde ilgili yasal mercilerle paylaşılır.</p>
-          <h3>4. Haklarınız (KVKK ve GDPR)</h3>
+
+          <h3>3. Kişisel Verilerin İşlenme Amaçları</h3>
           <ul>
-            <li>Verilerinize erişme ve düzeltme hakkı.</li>
-            <li>İşlemeyi kısıtlama veya itiraz etme hakkı.</li>
-            <li>Silme hakkı (&quot;Unutulma Hakkı&quot;).</li>
-            <li>Veri taşınabilirliği hakkı.</li>
+            <li>ThumbsAd Insights topluluk üyeliğinin oluşturulması ve yönetilmesi.</li>
+            <li>AI, pazarlama, growth ve MarTech içeriklerinin; etkinlik, canlı yayın ve bülten duyurularının iletilmesi.</li>
+            <li>ThumbsAd ve ThumbsAd’in ürünü TruOpt.ai hakkında ürün/hizmet bilgilendirmeleri, özel fırsatlar, erken erişim ve demo davetlerinin gönderilmesi.</li>
+            <li>TruOpt.ai ürün araştırmasının yürütülmesi; kullanıcı ihtiyaçlarının, sorunlarının ve özellik taleplerinin analiz edilmesi.</li>
+            <li>Başvuruların community, warm lead veya hot lead gibi gruplara ayrılması ve uygun iletişim akışının belirlenmesi.</li>
+            <li>Mükerrer kayıtların önlenmesi, form ve sistem güvenliğinin sağlanması, teknik sorunların giderilmesi ve süreç performansının ölçülmesi.</li>
+            <li>İzin, ret ve iletişim tercihleri kayıtlarının tutulması; hukuki yükümlülüklerin yerine getirilmesi ve olası uyuşmazlıklarda hakların korunması.</li>
           </ul>
-          <p>Kişisel verileriniz ve KVKK/GDPR kapsamındaki haklarınızla ilgili tüm taleplerinizi <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a> adresine gönderebilirsiniz.</p>
+
+          <h3>4. Kişisel Verilerin İşlenmesinin Hukuki Sebepleri</h3>
+          <p>Kişisel verileriniz, veri işleme faaliyetinin niteliğine göre KVKK’nın 5’inci maddesinde yer alan açık rıza, veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi, bir hakkın tesisi/kullanılması/korunması ve temel hak ve özgürlüklerinize zarar vermemek kaydıyla veri sorumlusunun meşru menfaati hukuki sebeplerine dayanılarak işlenebilir. Pazarlama ve ticari elektronik ileti gönderimleri, gerekli olduğu ölçüde verdiğiniz ticari elektronik ileti onayı ve açık rıza kapsamında gerçekleştirilir.</p>
+
+          <h3>5. Kişisel Verilerin Toplanma Yöntemi</h3>
+          <p>Kişisel verileriniz; web sitesi formları, Google Forms veya benzeri araştırma formları, e-posta, etkinlik ve canlı yayın kayıtları, demo/erken erişim başvuruları ve bu kanallardaki otomatik teknik kayıtlar aracılığıyla elektronik ortamda toplanır.</p>
+
+          <h3>6. Kişisel Verilerin Aktarılması</h3>
+          <p>Kişisel verileriniz, yukarıdaki amaçlarla sınırlı ve gerekli olduğu ölçüde; barındırma, bulut depolama, e-posta gönderimi, form, analiz, müşteri ilişkileri ve teknik destek hizmeti aldığımız tedarikçilere; hukuk, mali müşavirlik ve bilgi teknolojileri danışmanlarına; ayrıca kanunen yetkili kamu kurum ve kuruluşlarına aktarılabilir.</p>
+          <p>Yurt dışında bulunan veya verileri yurt dışında saklayan hizmet sağlayıcıların kullanılması hâlinde aktarımlar, KVKK’nın 9’uncu maddesinde düzenlenen yurt dışına aktarım şartları ve uygun güvenceler çerçevesinde gerçekleştirilir.</p>
+
+          <h3>7. Saklama Süresi</h3>
+          <p>Kişisel verileriniz, işlendikleri amaç için gerekli süre boyunca ve ilgili mevzuatta öngörülen yasal saklama süreleri çerçevesinde muhafaza edilir. İletişim izninizi geri çekmeniz veya üyelikten ayrılmanız hâlinde pazarlama iletişimi durdurulur; izin, ret ve işlem kayıtları hukuki yükümlülükler ile hakların tesisi, kullanılması veya korunması için gerekli süre boyunca sınırlı olarak saklanabilir. Sürelerin sonunda veriler silinir, yok edilir veya anonim hâle getirilir.</p>
+
+          <h3>8. Ticari Elektronik İleti Tercihleri</h3>
+          <p>Ticari elektronik ileti onayınızı dilediğiniz zaman gönderilen e-postalardaki abonelikten çıkma bağlantısını kullanarak, <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a> adresine başvurarak veya uygulanabilir olduğu ölçüde İleti Yönetim Sistemi (İYS) üzerinden geri çekebilirsiniz. İznin geri çekilmesi, geri çekme işleminden önce gerçekleştirilen veri işleme faaliyetlerinin hukuka uygunluğunu etkilemez.</p>
+
+          <h3>9. KVKK Kapsamındaki Haklarınız</h3>
+          <p>KVKK’nın 11’inci maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
+          <ul>
+            <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi talep etme.</li>
+            <li>İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme.</li>
+            <li>Kişisel verilerin aktarıldığı yurt içindeki veya yurt dışındaki üçüncü kişileri öğrenme.</li>
+            <li>Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme.</li>
+            <li>KVKK’da öngörülen şartlar çerçevesinde verilerin silinmesini veya yok edilmesini isteme.</li>
+            <li>Düzeltme, silme veya yok etme işlemlerinin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme.</li>
+            <li>Münhasıran otomatik sistemler aracılığıyla analiz sonucunda aleyhinize bir sonucun ortaya çıkmasına itiraz etme.</li>
+            <li>Kanuna aykırı işleme sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme.</li>
+          </ul>
+
+          <h3>10. Başvuru Yöntemi</h3>
+          <p>KVKK kapsamındaki taleplerinizi, kimliğinizi ve talebinizi açıklayan başvurunuzla birlikte Esentepe Mah. Büyükdere Cad. No: 193/2, 34394 Şişli/İstanbul adresine yazılı olarak veya veri sorumlusuna daha önce bildirdiğiniz ve sistemimizde kayıtlı bulunan e-posta adresiniz aracılığıyla <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a> adresine iletebilirsiniz. Başvurular, talebin niteliğine göre mümkün olan en kısa sürede ve en geç mevzuatta öngörülen süre içinde sonuçlandırılır.</p>
+
+          <h3>11. Metnin Güncellenmesi</h3>
+          <p>Bu Veri Koruma ve Gizlilik Metni, kişisel veri işleme süreçlerimizde veya ilgili mevzuatta meydana gelebilecek değişikliklere bağlı olarak güncellenebilir. Güncel metin <a href="https://www.thumbsad.com/policies/data-protection-privacy" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://www.thumbsad.com/policies/data-protection-privacy</a> adresinde yayımlanır.</p>
+          <p className="text-sm text-gray-500 font-medium mt-4">Versiyon: 1.0 | Yayın tarihi: 14.08.2026</p>
         </>
       )
     },

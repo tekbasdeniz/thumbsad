@@ -14,7 +14,7 @@ const CheckIcon = () => (
 export default function AboutPageTr() {
   const pillars = [
     {
-      title: "Growth Consulting",
+      title: "Şirketlere Büyüme Danışmanlığı",
       desc: "Sadece yüzeysel metriklere odaklanmıyor, markanızın ticari geleceğini inşa ediyoruz. GTM pazar giriş stratejinizden dijital mimarinizin optimizasyonuna kadar tüm süreçleri uçtan uca tasarlıyoruz. Veriye dayalı büyüme stratejileri ve optimize edilmiş funnel yapıları kurarak, en üst düzey KPI hedeflerinizle doğrudan eşleşen, somut ve sürdürülebilir bir yürütme süreci sunuyoruz."
     },
     {
@@ -61,7 +61,7 @@ export default function AboutPageTr() {
         {/* Why ThumbsAd Section */}
         <div className="space-y-10">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-4 border-b border-gray-200 text-center">
-            Why ThumbsAd
+            Neden ThumbsAd
           </h2>
 
           <ul className="space-y-10">

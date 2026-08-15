@@ -5,6 +5,7 @@ import { client } from '@/sanity/lib/client';
 import { getLocalizedPostBySlugQuery, getAllPostPathsQuery } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/image';
 import SanityContent from '@/components/SanityContent';
+import InsightsCTA from '@/components/InsightsCTA';
 
 export const revalidate = 60;
 export const dynamicParams = true;
@@ -42,7 +43,7 @@ export async function generateStaticParams() {
                 Boolean(p && p.slug && p.year && p.month && p.day)
             );
     } catch (error) {
-        console.error('Error generating static params for news (TR):', error);
+        console.error('Error generating static params for insights (EN):', error);
         return [];
     }
 }
@@ -51,20 +52,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     try {
         const resolvedParams = await params;
         if (!resolvedParams?.slug || !resolvedParams?.year || !resolvedParams?.month || !resolvedParams?.day) {
-            return { title: 'Haber Bulunamadı | ThumbsAd' };
+            return { title: 'Insight Not Found | ThumbsAd' };
         }
 
-        const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'tr', slug: resolvedParams.slug });
+        const post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'en', slug: resolvedParams.slug });
         if (!post) {
-            return { title: 'Haber Bulunamadı | ThumbsAd' };
+            return { title: 'Insight Not Found | ThumbsAd' };
         }
         return {
-            title: `${post?.title || 'Haberler'} | ThumbsAd Haberler`,
-            description: post?.excerpt_tr || post?.excerpt || undefined,
+            title: `${post?.title || 'Insights'} | ThumbsAd Insights`,
+            description: post?.excerpt_en || post?.excerpt || undefined,
         };
     } catch (error) {
-        console.error('Error generating metadata for news detail (TR):', error);
-        return { title: 'Haberler | ThumbsAd' };
+        console.error('Error generating metadata for insights detail (EN):', error);
+        return { title: 'Insights | ThumbsAd' };
     }
 }
 
@@ -78,9 +79,9 @@ export default async function Page({ params }: PageProps) {
 
     let post: any = null;
     try {
-        post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'tr', slug: slug });
+        post = await client.fetch(getLocalizedPostBySlugQuery, { lang: 'en', slug: slug });
     } catch (error) {
-        console.error('Sanity fetch error on news detail page (TR):', error);
+        console.error('Sanity fetch error on insights detail page (EN):', error);
         post = null;
     }
 
@@ -88,10 +89,10 @@ export default async function Page({ params }: PageProps) {
         notFound();
     }
 
-    // 5 Temel Alan (Dilli): category_tr, title, excerpt_tr, author, publishedAt
-    const categoryName = post?.category_tr || post?.category || post?.categories?.[0]?.title || 'Haberler';
-    const title = post?.title || 'Başlıksız';
-    const excerpt = post?.excerpt_tr || post?.excerpt || '';
+    // 5 Core Fields (Localized): category_en, title, excerpt_en, author, publishedAt
+    const categoryName = post?.category_en || post?.category || post?.categories?.[0]?.title || 'Insights';
+    const title = post?.title || 'Untitled';
+    const excerpt = post?.excerpt_en || post?.excerpt || '';
     const authorName = post?.author || 'ThumbsAd';
     
     let formattedDate = `${year}-${month}-${day}`;
@@ -99,7 +100,7 @@ export default async function Page({ params }: PageProps) {
         try {
             const dateObj = new Date(post.publishedAt);
             if (!isNaN(dateObj.getTime())) {
-                formattedDate = dateObj.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+                formattedDate = dateObj.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
             }
         } catch {
             formattedDate = `${year}-${month}-${day}`;
@@ -118,32 +119,32 @@ export default async function Page({ params }: PageProps) {
     return (
         <main className="w-full bg-white">
             <article className="w-full max-w-4xl mx-auto px-6 py-24 md:py-32">
-                {/* 1. En üstte Türkçe Kategori (category_tr - düz metin) */}
+                {/* 1. English Category name at top (category_en - plain text) */}
                 <span className="text-xs md:text-sm font-semibold text-[#0a246b] uppercase tracking-wider block">
                     {categoryName}
                 </span>
 
-                {/* 2. Altında büyük Başlık (h1) */}
+                {/* 2. Large Title (h1) */}
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mt-3 mb-4">
                     {title}
                 </h1>
 
-                {/* 3. Altında Türkçe Özet (excerpt_tr) */}
+                {/* 3. English Excerpt (excerpt_en) */}
                 {excerpt ? (
                     <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed mb-6">
                         {excerpt}
                     </p>
                 ) : null}
 
-                {/* 4. Onun altında sol tarafta Yazar adı, sağ tarafta Tarih */}
+                {/* 4. Author name on left, Date on right */}
                 <div className="flex justify-between items-center border-y border-gray-200 py-3 my-6 text-sm text-gray-600 font-medium">
                     <span>{authorName}</span>
                     <span>{formattedDate}</span>
                 </div>
 
-                {/* 5. Hemen altında kapak görseli */}
+                {/* 5. Cover Image */}
                 {imageUrl && (
-                    <div className="relative w-full aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden mb-12 bg-gray-100 shadow-sm">
+                    <div className="relative w-full aspect-video md:aspect-21/9 rounded-2xl overflow-hidden mb-12 bg-gray-100 shadow-sm">
                         <Image 
                             src={imageUrl} 
                             alt={title} 
@@ -155,10 +156,13 @@ export default async function Page({ params }: PageProps) {
                     </div>
                 )}
 
-                {/* 6. Prose zengin metin alanı */}
+                {/* 6. Prose rich text body */}
                 <div className="prose dark:prose-invert max-w-none text-gray-800">
                     <SanityContent value={post?.content} />
                 </div>
+
+                {/* 7. Insights CTA Banner */}
+                <InsightsCTA lang="en" />
             </article>
         </main>
     );

@@ -2,21 +2,22 @@ import { Metadata } from 'next';
 import { client } from '@/sanity/lib/client';
 import { getLocalizedPostsQuery } from '@/sanity/lib/queries';
 import BlogCard from '@/components/sections/BlogCard';
+import InsightsForm from '@/components/InsightsForm';
 
 export const metadata: Metadata = {
-    title: 'News | ThumbsAd',
-    description: 'The latest news, trends, and strategic updates on AI, enterprise growth, and digital marketing.',
+    title: 'Insights | ThumbsAd',
+    description: 'The latest insights, trends, and strategic updates on AI, enterprise growth, and digital marketing.',
 };
 
 export const revalidate = 60;
 
-export default async function NewsPageEn() {
+export default async function InsightsPageEn() {
     let posts: any[] = [];
     try {
         const fetched = await client.fetch(getLocalizedPostsQuery, { lang: 'en' });
         posts = Array.isArray(fetched) ? fetched : [];
     } catch (error) {
-        console.error('Sanity fetch error in NewsPageEn:', error);
+        console.error('Sanity fetch error in InsightsPageEn:', error);
         posts = [];
     }
 
@@ -25,13 +26,15 @@ export default async function NewsPageEn() {
             <section className="w-full pt-32 pb-16 px-6 md:px-12 bg-gray-50 border-b border-gray-100">
                 <div className="max-w-5xl mx-auto text-center space-y-6">
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
-                        News
+                        Insights
                     </h1>
                     <p className="text-xl text-gray-500 font-light max-w-3xl mx-auto">
-                        Latest updates and news on how AI is shaping the future, technical analyses, and actionable tactics for scalable growth.
+                        Latest updates and insights on how AI is shaping the future, technical analyses, and actionable tactics for scalable growth.
                     </p>
                 </div>
             </section>
+
+            <InsightsForm lang="en" />
 
             <section className="w-full py-20 px-6 md:px-12">
                 <div className="max-w-7xl mx-auto">
@@ -43,7 +46,7 @@ export default async function NewsPageEn() {
                         </div>
                     ) : (
                         <div className="text-center py-16 text-gray-500">
-                            No published news found yet.
+                            No published insights found yet.
                         </div>
                     )}
                 </div>

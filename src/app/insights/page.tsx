@@ -2,21 +2,22 @@ import { Metadata } from 'next';
 import { client } from '@/sanity/lib/client';
 import { getLocalizedPostsQuery } from '@/sanity/lib/queries';
 import BlogCard from '@/components/sections/BlogCard';
+import InsightsForm from '@/components/InsightsForm';
 
 export const metadata: Metadata = {
-    title: 'Haberler | ThumbsAd',
-    description: 'Yapay zeka, kurumsal büyüme ve dijital pazarlama alanındaki son haberler, trendler ve gelişmeler.',
+    title: 'İçgörüler | ThumbsAd',
+    description: 'Yapay zeka, kurumsal büyüme ve dijital pazarlama alanındaki son içgörüler, trendler ve gelişmeler.',
 };
 
 export const revalidate = 60;
 
-export default async function NewsPageTr() {
+export default async function InsightsPageTr() {
     let posts: any[] = [];
     try {
         const fetched = await client.fetch(getLocalizedPostsQuery, { lang: 'tr' });
         posts = Array.isArray(fetched) ? fetched : [];
     } catch (error) {
-        console.error('Sanity fetch error in NewsPageTr:', error);
+        console.error('Sanity fetch error in InsightsPageTr:', error);
         posts = [];
     }
 
@@ -25,13 +26,15 @@ export default async function NewsPageTr() {
             <section className="w-full pt-32 pb-16 px-6 md:px-12 bg-gray-50 border-b border-gray-100">
                 <div className="max-w-5xl mx-auto text-center space-y-6">
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
-                        Haberler
+                        İçgörüler
                     </h1>
                     <p className="text-xl text-gray-500 font-light max-w-3xl mx-auto">
-                        Yapay zekanın geleceği nasıl şekillendirdiğine dair son haberler, güncellemeler ve ölçeklenebilir büyüme için duyurular.
+                        Yapay zekanın geleceği nasıl şekillendirdiğine dair son içgörüler, güncellemeler ve ölçeklenebilir büyüme için duyurular.
                     </p>
                 </div>
             </section>
+
+            <InsightsForm lang="tr" />
 
             <section className="w-full py-20 px-6 md:px-12">
                 <div className="max-w-7xl mx-auto">
@@ -43,7 +46,7 @@ export default async function NewsPageTr() {
                         </div>
                     ) : (
                         <div className="text-center py-16 text-gray-500">
-                            Henüz yayınlanmış bir haber bulunamadı.
+                            Henüz yayınlanmış bir içgörü bulunamadı.
                         </div>
                     )}
                 </div>

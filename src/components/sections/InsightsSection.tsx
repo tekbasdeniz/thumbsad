@@ -23,21 +23,21 @@ export default function InsightsSection({ posts: sanityPosts = [], lang }: Insig
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                         <div className="space-y-4 max-w-2xl">
                             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black">
-                                {isEn ? "News" : "Haberler"}
+                                {isEn ? "Insights" : "İçgörüler"}
                             </h2>
                             <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-light">
                                 {isEn
-                                    ? "Latest news on AI, enterprise growth, and digital expansion."
-                                    : "Yapay zeka, kurumsal büyüme ve dijital genişleme üzerine son haberler ve duyurular."
+                                    ? "Latest insights on AI, enterprise growth, and digital expansion."
+                                    : "Yapay zeka, kurumsal büyüme ve dijital genişleme üzerine son içgörüler ve duyurular."
                                 }
                             </p>
                         </div>
                         <div>
                             <Link
-                                href={isEn ? "/en/news" : "/news"}
+                                href={isEn ? "/en/insights" : "/insights"}
                                 className="px-8 py-3 rounded-full bg-white border-2 border-[#0a246b] text-[#0a246b] font-semibold transition-transform inline-flex items-center gap-2 group hover:shadow-md hover:-translate-y-1"
                             >
-                                {isEn ? "View All News" : "Tüm Haberler"}
+                                {isEn ? "View All Insights" : "Tüm İçgörüler"}
                                 <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
                             </Link>
                         </div>

@@ -70,27 +70,74 @@ export default async function PolicyPageEn({ params }: { params: Promise<{ slug:
       title: "Data Protection & Privacy",
       content: (
         <>
-          <p><strong>Data Controller:</strong> ThumbsAd – Deniz Tekbaş</p>
-          <p>Pursuant to the Law on the Protection of Personal Data No. 6698 (“KVKK”) and the General Data Protection Regulation (“GDPR”), your personal data is processed by us as the data controller within the scope explained below.</p>
-          <h3>1. Processed Data Categories</h3>
-          <p><strong>Identity & Contact Info:</strong> Name, surname, email address, phone number.<br/>
-          <strong>Transaction Security:</strong> IP address, session logs, and traffic data.</p>
-          <h3>2. Purposes of Processing</h3>
+          <h3>1. Data Controller and Scope</h3>
+          <p>Under the Law on the Protection of Personal Data No. 6698 (“KVKK”), your personal data is processed by Deniz Tekbaş | ThumbsAd (“ThumbsAd”) in its capacity as the data controller. TruOpt.ai is a product/service developed and provided by ThumbsAd; it is not a separate data controller.</p>
+          <p>
+            <strong>Tax Information:</strong> Tax ID: 8330788117 | Zincirlikuyu Tax Office<br/>
+            <strong>Address:</strong> Esentepe Mah. Büyükdere Cad. No: 193/2, 34394 Şişli/Istanbul<br/>
+            <strong>Email:</strong> <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a><br/>
+            <strong>Phone:</strong> +90 212 955 00 63<br/>
+            <strong>Websites:</strong> <a href="https://thumbsad.com" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://thumbsad.com</a> and <a href="https://truopt.ai" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://truopt.ai</a>
+          </p>
+          <p>This Privacy Notice covers personal data collected through the ThumbsAd and TruOpt.ai websites, ThumbsAd Insights community membership, newsletter and event registrations, TruOpt.ai product research, early access, demos, and similar contact forms.</p>
+
+          <h3>2. Personal Data Processed</h3>
+          <p>Depending on the relevant form and the information shared by the user, the following personal data may be processed:</p>
           <ul>
-            <li>Provision and execution of website services.</li>
-            <li>Sending campaign, newsletter, and informational messages (based on explicit consent).</li>
-            <li>Post-service support, invoicing, and legal compliance.</li>
+            <li><strong>Identification information:</strong> first and last name.</li>
+            <li><strong>Contact information:</strong> email address and, if additionally shared by the user, phone number.</li>
+            <li><strong>Request and product research information:</strong> organization/company type, advertising budget range, advertising platforms used, needs, issues, feature requests, and preferences regarding demos or early access.</li>
+            <li><strong>Marketing and consent information:</strong> communication preference, consent status, date and time of consent, consent text version, and opt-out/unsubscribe records.</li>
+            <li><strong>Transaction and source information:</strong> registration date and time, registration source, source page URL, and UTM source/medium/campaign information.</li>
+            <li><strong>Communication records:</strong> requests, opinions, feedback, and correspondence sent to us.</li>
           </ul>
-          <h3>3. Data Sharing & Transfer</h3>
-          <p>Your data is shared strictly with server/hosting providers, email service infrastructures, and relevant legal authorities when required by law, in accordance with KVKK and GDPR transfer regulations.</p>
-          <h3>4. Your Rights (KVKK & GDPR)</h3>
+
+          <h3>3. Purposes of Processing Personal Data</h3>
           <ul>
-            <li>Right to access and rectification of your data.</li>
-            <li>Right to restrict or object to processing.</li>
-            <li>Right to erasure (“Right to be forgotten”).</li>
-            <li>Right to data portability.</li>
+            <li>Creating and managing ThumbsAd Insights community membership.</li>
+            <li>Delivering AI, marketing, growth, and MarTech content; as well as announcements regarding events, live streams, and newsletters.</li>
+            <li>Sending product/service information, special offers, early access, and demo invitations regarding ThumbsAd and its product, TruOpt.ai.</li>
+            <li>Conducting TruOpt.ai product research; analyzing user needs, issues, and feature requests.</li>
+            <li>Categorizing applications into groups such as “community,” “warm leads,” or “hot leads,” and determining the appropriate communication workflow.</li>
+            <li>Preventing duplicate registrations, ensuring form and system security, resolving technical issues, and measuring process performance.</li>
+            <li>Maintaining records of consents, opt-outs, and communication preferences; fulfilling legal obligations and protecting rights in the event of potential disputes.</li>
           </ul>
-          <p>You can submit all your requests regarding your personal data and rights under KVKK/GDPR to <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a>.</p>
+
+          <h3>4. Legal Grounds for the Processing of Personal Data</h3>
+          <p>Your personal data may be processed based on the legal grounds set forth in Article 5 of the Personal Data Protection Law (KVKK), depending on the nature of the data processing activity, including explicit consent, the data controller’s fulfillment of its legal obligations, the establishment, exercise, or protection of a right, and the data controller’s legitimate interest, provided that such processing does not infringe upon your fundamental rights and freedoms. Marketing and commercial electronic communications are sent to the extent necessary, in accordance with the consent and explicit consent you have provided for commercial electronic communications.</p>
+
+          <h3>5. Method of Collecting Personal Data</h3>
+          <p>Your personal data is collected electronically through website forms, Google Forms or similar survey forms, email, event and live stream recordings, demo/early access applications, and automatic technical logs from these channels.</p>
+
+          <h3>6. Transfer of Personal Data</h3>
+          <p>Your personal data may be transferred, to the extent necessary and limited to the purposes stated above, to suppliers from whom we receive hosting, cloud storage, email delivery, form processing, analytics, customer relations, and technical support services; to legal, financial, and information technology consultants; and to public institutions and organizations authorized by law.</p>
+          <p>In cases where service providers located abroad or storing data abroad are used, transfers are carried out in accordance with the conditions for cross-border transfers set forth in Article 9 of the Personal Data Protection Law (KVKK) and within the framework of appropriate safeguards.</p>
+
+          <h3>7. Retention Period</h3>
+          <p>Your personal data will be retained for as long as necessary to fulfill the purpose for which it was processed and within the legal retention periods stipulated by applicable legislation. If you withdraw your consent for communications or cancel your membership, marketing communications will cease; however, records of consent, opt-outs, and transactions may be retained on a limited basis for as long as necessary to fulfill legal obligations and to establish, exercise, or defend legal rights. At the end of these periods, the data will be deleted, destroyed, or anonymized.</p>
+
+          <h3>8. Commercial Electronic Communication Preferences</h3>
+          <p>You may withdraw your consent to receive commercial electronic communications at any time by using the unsubscribe link in the emails sent to you, by contacting <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a>, or, to the extent applicable, through the Message Management System (İYS). Withdrawal of consent does not affect the lawfulness of data processing activities carried out prior to the withdrawal.</p>
+
+          <h3>9. Your Rights Under the KVKK</h3>
+          <p>Under Article 11 of the KVKK, you have the following rights:</p>
+          <ul>
+            <li>To learn whether your personal data has been processed and, if so, to request information regarding such processing.</li>
+            <li>To learn the purpose of the processing and whether the data is being used in accordance with that purpose.</li>
+            <li>To learn the identities of third parties, both domestic and international, to whom your personal data has been transferred.</li>
+            <li>To request the correction of incomplete or incorrectly processed data.</li>
+            <li>To request the erasure or destruction of your data in accordance with the conditions set forth in the KVKK.</li>
+            <li>To request that third parties to whom your data has been transferred be notified of any corrections, erasures, or destruction of your data.</li>
+            <li>Objecting to a decision made solely through automated systems that results in a negative outcome for you.</li>
+            <li>Request compensation for damages incurred due to unlawful processing.</li>
+          </ul>
+
+          <h3>10. Application Method</h3>
+          <p>You may submit your requests under the KVKK, along with a written application that identifies you and explains your request, to the address Esentepe Mah. Büyükdere Cad. No: 193/2, 34394 Şişli/İstanbul, or via the email address you previously provided to the data controller and which is registered in our system, at <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a>. Requests will be processed as soon as possible, depending on the nature of the request, and no later than the timeframe stipulated by law.</p>
+
+          <h3>11. Updates to This Policy</h3>
+          <p>This Data Protection and Privacy Policy may be updated in response to changes in our personal data processing procedures or in applicable legislation. The current version is published at <a href="https://www.thumbsad.com/policies/data-protection-privacy" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://www.thumbsad.com/policies/data-protection-privacy</a>.</p>
+          <p className="text-sm text-gray-500 font-medium mt-4">Version: 1.0 | Publication Date: August 14, 2026</p>
         </>
       )
     },
