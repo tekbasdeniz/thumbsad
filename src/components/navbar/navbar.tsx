@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const navLinksTr = [
   { name: "Hakkımızda", href: "/about" },
-  { name: "Çözümler", href: "/solutions" },
+  { name: "Uzmanlıklarımız", href: "/capabilities" },
   { name: "İçgörüler", href: "/insights" },
   { name: "Deneyimler", href: "/experiences" },
   { name: "İletişim", href: "/contact" },
@@ -15,7 +15,7 @@ const navLinksTr = [
 
 const navLinksEn = [
   { name: "About", href: "/en/about" },
-  { name: "Solutions", href: "/en/solutions" },
+  { name: "Capabilities", href: "/en/capabilities" },
   { name: "Insights", href: "/en/insights" },
   { name: "Experiences", href: "/en/experiences" },
   { name: "Contact", href: "/en/contact" },

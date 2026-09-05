@@ -2,7 +2,7 @@ import ExperiencesMarquee from "@/components/sections/ExperiencesMarquee";
 import TruOptSection from "@/components/sections/TruOptSection";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import Solutions from "@/components/sections/Solutions";
+import Capabilities from "@/components/sections/Capabilities";
 import InsightsSection from "@/components/sections/InsightsSection";
 import { client } from "@/sanity/lib/client";
 import { getLocalizedPostsQuery } from "@/sanity/lib/queries";
@@ -32,13 +32,13 @@ export default async function HomePageEn() {
       <Hero />
 
       {/* About Preview */}
-      <About />
+      <About lang="en" />
 
-      {/* Experiences Preview (Logo Marquee between About and Solutions) */}
-      <ExperiencesMarquee />
+      {/* Experiences Preview (Logo Marquee between About and Capabilities) */}
+      <ExperiencesMarquee lang="en" />
 
-      {/* Solutions Preview */}
-      <Solutions isHome={true} />
+      {/* Capabilities Preview */}
+      <Capabilities lang="en" isHome={true} />
 
       {/* Insights Section */}
       <InsightsSection posts={latestPosts} lang="en" />

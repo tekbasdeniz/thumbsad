@@ -2,26 +2,26 @@
 
 import { usePathname } from "next/navigation";
 
-export default function ContactSection({ isPage = false }: { isPage?: boolean }) {
-  const pathname = usePathname();
-  const isEn = pathname.startsWith("/en");
+export default function ContactSection({ isPage = false, lang }: { isPage?: boolean; lang?: "tr" | "en" }) {
+  const pathname = usePathname() || "";
+  const isEn = lang ? lang === "en" : pathname.startsWith("/en");
 
   const text = isEn
     ? {
-        title: "Let’s Build Your Growth System",
-        description: "For projects, partnerships, and growth initiatives, get in touch.",
-        bookCall: "Book a Call",
-        requestAudit: "Request AI Audit",
+        title: "Transforming AI strategy into measurable business growth.",
+        description: "Get in touch to take your business to the next level.",
+        bookCall: "Explore Our Capabilities",
+        requestAudit: "Contact Us",
         email: "Email",
         phone: "Phone",
         address: "Address",
         addressText: "Esentepe Mah. Büyükdere Cad. NO:193/2 , 34394 , Şişli/İSTANBUL",
       }
     : {
-        title: "Büyüme Sistemini Birlikte Kuralım",
-        description: "Projeler ve iş birlikleri için iletişime geçebilirsiniz.",
-        bookCall: "Randevu Oluştur",
-        requestAudit: "AI Denetimi Talep Et",
+        title: "Yapay zeka stratejisini ölçülebilir iş büyümesine dönüştürüyoruz.",
+        description: "İşinizi bir sonraki adıma taşımak için iletişime geçin.",
+        bookCall: "Uzmanlıklarımızı Keşfedin",
+        requestAudit: "Bize Ulaşın",
         email: "E-Posta",
         phone: "Telefon",
         address: "Adres",

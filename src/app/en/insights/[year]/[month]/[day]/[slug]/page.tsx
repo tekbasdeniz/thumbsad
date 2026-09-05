@@ -118,7 +118,7 @@ export default async function Page({ params }: PageProps) {
 
     return (
         <main className="w-full bg-white">
-            <article className="w-full max-w-4xl mx-auto px-6 py-24 md:py-32">
+            <article className="w-full max-w-4xl mx-auto px-6 pt-16 md:pt-20 pb-12 md:pb-16">
                 {/* 1. English Category name at top (category_en - plain text) */}
                 <span className="text-xs md:text-sm font-semibold text-[#0a246b] uppercase tracking-wider block">
                     {categoryName}

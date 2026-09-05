@@ -34,15 +34,15 @@ const Hero = () => {
             <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-6 md:gap-8">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-normal md:tracking-tighter text-white md:leading-tight px-2 drop-shadow-sm">
                     {isEn
-                        ? "AI-Powered Growth Systems for Corporate Success"
-                        : "Kurumsal Başarı için Yapay Zeka Destekli Büyüme Sistemleri"
+                        ? "AI Growth & Transformation Partner"
+                        : "Yapay Zeka Büyüme ve Dönüşüm Ortağınız"
                     }
                 </h1>
 
                 <p className="text-xl md:text-2xl text-slate-300 max-w-2xl leading-relaxed font-light">
                     {isEn
-                        ? "We build AI-powered systems that improve performance, increase efficiency, and scale growth."
-                        : "Performansı artıran, verimliliği yükselten ve büyümeyi ölçekleyen yapay zeka sistemleri kuruyoruz."
+                        ? "We support organizations’ sustainable growth by translating artificial intelligence from strategy into practice."
+                        : "Yapay zekâyı stratejiden uygulamaya taşıyarak kurumların sürdürülebilir büyümesini destekliyoruz."
                     }
                 </p>
 
@@ -59,7 +59,7 @@ const Hero = () => {
                             <line x1="8" y1="2" x2="8" y2="6" />
                             <line x1="3" y1="10" x2="21" y2="10" />
                         </svg>
-                        {isEn ? "Build Your AI Growth System" : "Büyüme Sistemini Kur"}
+                        {isEn ? "Explore Our Capabilities" : "Uzmanlıklarımızı Keşfedin"}
                     </a>
 
                     <a
@@ -69,7 +69,7 @@ const Hero = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                         </svg>
-                        {isEn ? "Request AI Audit" : "AI Denetimi Talep Et"}
+                        {isEn ? "Contact Us" : "Bize Ulaşın"}
                     </a>
                 </div>
             </div>

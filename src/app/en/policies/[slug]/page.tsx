@@ -184,7 +184,7 @@ export default async function PolicyPageEn({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="w-full min-h-[70vh] flex flex-col justify-center items-center bg-white px-6 py-24 md:py-32">
+    <div className="w-full min-h-[70vh] flex flex-col justify-center items-center bg-white px-6 pt-16 md:pt-20 pb-12 md:pb-16">
       <div className="max-w-3xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-8 md:mb-12 border-b pb-6">
           {policy.title}

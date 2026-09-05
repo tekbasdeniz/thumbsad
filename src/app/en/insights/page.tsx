@@ -23,12 +23,12 @@ export default async function InsightsPageEn() {
 
     return (
         <main className="w-full bg-white">
-            <section className="w-full pt-32 pb-16 px-6 md:px-12 bg-gray-50 border-b border-gray-100">
-                <div className="max-w-5xl mx-auto text-center space-y-6">
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
+            <section className="w-full pt-16 pb-4 sm:pt-24 sm:pb-8 md:pt-28 md:pb-12 px-5 md:px-12 bg-white">
+                <div className="max-w-5xl mx-auto text-center space-y-2 md:space-y-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
                         Insights
                     </h1>
-                    <p className="text-xl text-gray-500 font-light max-w-3xl mx-auto">
+                    <p className="text-base sm:text-lg md:text-xl text-gray-500 font-light max-w-3xl mx-auto">
                         Latest updates and insights on how AI is shaping the future, technical analyses, and actionable tactics for scalable growth.
                     </p>
                 </div>

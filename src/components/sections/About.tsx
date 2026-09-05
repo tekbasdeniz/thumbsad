@@ -9,22 +9,31 @@ const CheckIcon = () => (
     </svg>
 );
 
-const About = () => {
+interface AboutProps {
+    lang?: "tr" | "en";
+}
+
+const About = ({ lang }: AboutProps = {}) => {
     const pathname = usePathname() || "";
-    const isEn = pathname.startsWith("/en");
+    const activeLang = lang || (pathname.startsWith("/en") ? "en" : "tr");
+    const isEn = activeLang === "en";
 
     const pillars = isEn
         ? [
-            "Growth Consulting",
-            "Tailored Integrated Solutions",
-            "AI-Powered Organizational Transformation",
-            "Intelligent Automation & Education-Driven Outcomes"
+            "AI-first Approach",
+            "Strategy + Execution",
+            "Agile Delivery",
+            "Measurable Growth",
+            "Enterprise Mindset",
+            "Innovation"
         ]
         : [
-            "Şirketlere Büyüme Danışmanlığı",
-            "İhtiyaca Özel Entegre Çözümler",
-            "Yapay Zeka Destekli Yapısal Dönüşüm",
-            "Akıllı Otomasyon ve Eğitim Odaklı Sonuçlar"
+            "Yapay Zeka Öncelikli Yaklaşım",
+            "Strateji + Uygulama",
+            "Çevik Teslimat",
+            "Ölçülebilir Büyüme",
+            "Kurumsal Vizyon ve Yaklaşım",
+            "İnovasyon"
         ];
 
     return (
@@ -34,28 +43,28 @@ const About = () => {
                 {/* 2 Kolon Grid - Esnek Yükseklik Eşitleme (items-stretch) */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
                     
-                    {/* Sol Kolon: What is ThumbsAd? */}
+                    {/* Sol Kolon: From Strategy to Execution */}
                     <div className="lg:col-span-6 flex flex-col text-center">
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 leading-tight mb-6">
-                            {isEn ? "What is ThumbsAd?" : "ThumbsAd Nedir?"}
+                            {isEn ? "From Strategy to Execution" : "Stratejiden Uygulamaya"}
                         </h2>
                         <div className="flex-1 flex items-center justify-center">
                             <p className="text-base sm:text-lg md:text-lg font-normal text-gray-700 leading-relaxed text-center max-w-[460px] mx-auto">
                                 {isEn
-                                    ? "ThumbsAd is an AI Growth Partner that designs, implements, and scales artificial intelligence, marketing, automation, and digital transformation solutions under one unified ecosystem to accelerate the growth of enterprise companies."
-                                    : "ThumbsAd, kurumsal şirketlerin büyümesini hızlandırmak için yapay zekâ, pazarlama, otomasyon ve dijital dönüşümü tek çatı altında tasarlayan, uygulayan ve hayata geçiren bir AI Growth Partner’dır."
+                                    ? "Artificial intelligence is not just technology. It translates into real business results only through the right strategy, precise execution, and accurate measurement. At ThumbsAd, we provide end-to-end support to institutions throughout this transformation journey."
+                                    : "Yapay zekâ yalnızca teknoloji değildir. Doğru strateji, doğru uygulama ve doğru ölçüm ile iş sonuçlarına dönüşür. ThumbsAd olarak kurumlara bu dönüşüm yolculuğunda uçtan uca destek sağlıyoruz."
                                 }
                             </p>
                         </div>
                     </div>
 
-                    {/* Sağ Kolon: Why ThumbsAd (4 Madde dikeyde tam eşleşir) */}
+                    {/* Sağ Kolon: Why ThumbsAd (6 Madde Orijinal Liste Yapısı) */}
                     <div className="lg:col-span-6 flex flex-col text-center">
                         <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 leading-tight mb-6">
                             {isEn ? "Why ThumbsAd" : "Neden ThumbsAd"}
                         </h3>
                         <div className="flex-1 flex items-center justify-center w-full">
-                            <ul className="flex flex-col justify-between text-left max-w-[460px] w-full h-full py-1 space-y-3">
+                            <ul className="flex flex-col justify-between text-left max-w-[460px] w-full h-full py-1 space-y-3.5 pl-4 sm:pl-8">
                                 {pillars.map((title, idx) => (
                                     <li key={idx} className="flex items-center space-x-3">
                                         <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100/80 flex items-center justify-center">

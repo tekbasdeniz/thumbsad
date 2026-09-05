@@ -88,7 +88,7 @@ function InsightsFormContent({ lang }: InsightsFormProps) {
   return (
     <div
       id="topluluga-katil"
-      className="scroll-mt-24 w-full max-w-4xl mx-auto px-6 py-10 my-8 bg-gradient-to-br from-blue-50/70 via-white to-gray-50 rounded-3xl border border-blue-100/80 shadow-xl shadow-blue-900/5 transition-all"
+      className="scroll-mt-24 w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 md:py-10 my-4 md:my-8 bg-white rounded-3xl border border-gray-200 shadow-sm transition-all"
     >
       {isSubmitted ? (
         <div className="flex flex-col items-center justify-center text-center py-6 px-4 space-y-4 animate-fade-in">
