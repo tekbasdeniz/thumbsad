@@ -10,6 +10,7 @@ const navLinksTr = [
   { name: "Uzmanlıklarımız", href: "/capabilities" },
   { name: "İçgörüler", href: "/insights" },
   { name: "Deneyimler", href: "/experiences" },
+  { name: "Eğitimler", href: "/educations" },
   { name: "İletişim", href: "/contact" },
 ];
 
@@ -18,6 +19,7 @@ const navLinksEn = [
   { name: "Capabilities", href: "/en/capabilities" },
   { name: "Insights", href: "/en/insights" },
   { name: "Experiences", href: "/en/experiences" },
+  { name: "Educations", href: "/en/educations" },
   { name: "Contact", href: "/en/contact" },
 ];
 
