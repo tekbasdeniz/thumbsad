@@ -36,7 +36,7 @@ export default function WebinarRegisterModal({
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = process.env.NEXT_PUBLIC_WEBINAR_SCRIPT_URL;
+        const scriptUrl = process.env.NEXT_PUBLIC_WEBINAR_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxPiC8VKBuN0XWgg5PZNkM0lt3S8SrExO14p06c2hzWxkv0mYMvThQvYUK7WzB4akN1/exec";
 
       if (!scriptUrl) {
         throw new Error('Script URL is not defined');
