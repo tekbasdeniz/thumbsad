@@ -8,6 +8,7 @@ const policyLinksTr = [
   { name: "Gizlilik Politikası", href: "/policies/privacy-policy" },
   { name: "Kullanım Şartları", href: "/policies/terms-of-use" },
   { name: "Veri Koruma & Gizlilik", href: "/policies/data-protection-privacy" },
+  { name: "Mesafeli Satış & İptal Koşulları", href: "/policies/distance-sales-and-refund" },
   { name: "Sorumluluk Reddi", href: "/policies/disclaimer" },
   { name: "Telif Hakkı ve Ticari Marka", href: "/policies/copyright-trademark-notice" },
 ];
@@ -17,6 +18,7 @@ const policyLinksEn = [
   { name: "Privacy Policy", href: "/en/policies/privacy-policy" },
   { name: "Terms of Use", href: "/en/policies/terms-of-use" },
   { name: "Data Protection & Privacy", href: "/en/policies/data-protection-privacy" },
+  { name: "Cancellation & Refund Policy", href: "/en/policies/distance-sales-and-refund" },
   { name: "Disclaimer", href: "/en/policies/disclaimer" },
   { name: "Copyright & Trademark Notice", href: "/en/policies/copyright-trademark-notice" },
 ];

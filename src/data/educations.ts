@@ -8,9 +8,24 @@ export interface Cohort {
   minCapacity: number;
 }
 
+export interface Instructor {
+  name: string;
+  title: {
+    tr: string;
+    en: string;
+  };
+  image?: string;
+  bio?: {
+    tr: string;
+    en: string;
+  };
+}
+
 export interface Education {
   id: string;
   slug: string;
+  image?: string;
+  instructor?: Instructor;
   type: 'webinar' | 'workshop' | 'open' | 'corporate';
   price: number | null;
   vatIncluded: boolean;
@@ -28,11 +43,19 @@ export interface Education {
   topics: { tr: string[]; en: string[] };
   cohorts?: Cohort[];
 }
-  
+
 // 1. ÜCRETSİZ WEBİNAR
 export const freeWebinar: Education = {
   id: "webinar-1",
   slug: "is-hayatinda-ai-ile-neleri-kolaylastirabilirsiniz",
+  image: '/images/webinar-gorsel.jpeg',
+  instructor: {
+    name: 'Deniz Tekbaş',
+    title: { 
+      tr: 'Yapay Zeka, Büyüme ve Dijital Dönüşüm Danışmanı', 
+      en: 'AI, Growth & Digital Transformation Advisor' 
+    },
+  },
   type: "webinar",
   price: null,
   vatIncluded: false,
@@ -40,7 +63,7 @@ export const freeWebinar: Education = {
   duration: { tr: "60 Dakika", en: "60 Minutes" },
   language: "Türkçe",
   status: "active",
-  date: { tr: "17 Ekim 2026 Cumartesi", en: "Saturday, October 17, 2026" },
+  date: { tr: "24 Ekim 2026 Cumartesi", en: "Saturday, October 24, 2026" },
   time: { tr: "12:00 - 13:00 (TSİ)", en: "12:00 - 13:00 (TRT / UTC+3)" },
   title: {
     tr: "İş Hayatında AI ile Neleri Kolaylaştırabilirsiniz?",
@@ -88,65 +111,95 @@ export const freeWebinar: Education = {
   }
 };
 
-// 2. AÇIK SINIF EĞİTİMLERİ (ÖN TALEP)
-export const openEducations: Education[] = [
-  {
-    id: "ws-1",
-    slug: "ai-ile-isinizi-kolaylastirin",
-    type: "open",
-    price: null,
-    vatIncluded: false,
-    currency: "TL",
-    duration: { tr: "3 Saat", en: "3 Hours" },
-    language: "Türkçe",
-    status: "preorder",
-    title: {
-      tr: "AI ile İşinizi Kolaylaştırın",
-      en: "Make Your Work Easier with AI"
+// 2. İLK İLKLERE ÖZEL ÜCRETLİ WORKSHOP (Satışı Aktif)
+export const activeWorkshop: Education = {
+  id: "ws-1",
+  slug: "ai-ile-isinizi-kolaylastirin",
+  image: '/images/ai-ile-isinizi-kolaylastirin.jpeg',
+  instructor: {
+    name: 'Deniz Tekbaş',
+    title: { 
+      tr: 'Yapay Zeka, Büyüme ve Dijital Dönüşüm Danışmanı', 
+      en: 'AI, Growth & Digital Transformation Advisor' 
     },
-    shortDescription: {
-      tr: "Tekrarlayan bir işinizi seçin, yapay zekâ destekli bir görev akışı tasarlayın ve çıktıyı kontrol ederek geliştirin.",
-      en: "Choose a recurring task, design an AI-assisted workflow and improve the result through structured review."
-    },
-    description: {
-      tr: "Bu üç saatlik canlı workshopta e-posta, toplantı notu ve araştırma örneklerinden kendi işinize uygun bir uygulama planına ilerleyeceksiniz.",
-      en: "This three-hour live workshop uses email, meeting notes and research examples to help you build a practical plan for your own work."
-    },
-    targetAudience: {
-      tr: "Girişimciler, freelancerlar, KOBİ çalışanları ve AI araçlarını günlük işlerinde daha düzenli kullanmak isteyen profesyoneller.",
-      en: "Entrepreneurs, freelancers, SME professionals and people starting to use AI in their daily work."
-    },
-    outcomes: {
-      tr: [
-        "AI kullanımına uygun bir iş görevi seçeceksiniz.",
-        "Görev, bağlam, kaynak, çıktı biçimi ve kontrol ölçütünü tanımlayacaksınız.",
-        "Toplantı, e-posta veya araştırma görevini örnek bir akışa dönüştüreceksiniz.",
-        "Kendi işiniz için bir görev akışı ve 7 günlük deneme planı hazırlayacaksınız."
-      ],
-      en: [
-        "Select a suitable task for AI use.",
-        "Define instructions, context, source material and review criteria.",
-        "Practise with a meeting, email or research workflow.",
-        "Leave with one workflow and a seven-day trial plan."
-      ]
-    },
-    topics: {
-      tr: [
-        "Görev seçimi ve AI sınırları",
-        "Açık talimat ve bağlam oluşturma",
-        "Toplantı ve e-posta uygulama örnekleri",
-        "Kaynak ve çıktı kontrolü",
-        "Kendi görevinde uygulama ve 7 günlük deneme planı"
-      ],
-      en: [
-        "Task selection and AI limitations",
-        "Clear instructions and context",
-        "Meeting and email examples",
-        "Source and output review",
-        "Implementation plan and Q&A"
-      ]
-    }
   },
+  type: "workshop",
+  price: 1000,
+  vatIncluded: false,
+  currency: "TL",
+  duration: { tr: "3 Saat", en: "3 Hours" },
+  language: "Türkçe",
+  status: "active",
+  title: {
+    tr: "AI ile İşinizi Kolaylaştırın",
+    en: "Make Your Work Easier with AI"
+  },
+  shortDescription: {
+    tr: "Tekrarlayan bir işinizi seçin, yapay zekâ destekli bir görev akışı tasarlayın ve çıktıyı kontrol ederek geliştirin.",
+    en: "Choose a recurring task, design an AI-assisted workflow and improve the result through structured review."
+  },
+  description: {
+    tr: "Bu üç saatlik canlı workshopta e-posta, toplantı notu ve araştırma örneklerinden kendi işinize uygun bir uygulama planına ilerleyeceksiniz.",
+    en: "This three-hour live workshop uses email, meeting notes and research examples to help you build a practical plan for your own work."
+  },
+  targetAudience: {
+    tr: "Girişimciler, freelancerlar, KOBİ çalışanları ve AI araçlarını günlük işlerinde daha düzenli kullanmak isteyen profesyoneller.",
+    en: "Entrepreneurs, freelancers, SME professionals and people starting to use AI in their daily work."
+  },
+  outcomes: {
+    tr: [
+      "AI kullanımına uygun bir iş görevi seçeceksiniz.",
+      "Görev, bağlam, kaynak, çıktı biçimi ve kontrol ölçütünü tanımlayacaksınız.",
+      "Toplantı, e-posta veya araştırma görevini örnek bir akışa dönüştüreceksiniz.",
+      "Kendi işiniz için bir görev akışı ve 7 günlük deneme planı hazırlayacaksınız."
+    ],
+    en: [
+      "Select a suitable task for AI use.",
+      "Define instructions, context, source material and review criteria.",
+      "Practise with a meeting, email or research workflow.",
+      "Leave with one workflow and a seven-day trial plan."
+    ]
+  },
+  topics: {
+    tr: [
+      "Görev seçimi ve AI sınırları",
+      "Açık talimat ve bağlam oluşturma",
+      "Toplantı ve e-posta uygulama örnekleri",
+      "Kaynak ve çıktı kontrolü",
+      "Kendi görevinde uygulama ve 7 günlük deneme planı"
+    ],
+    en: [
+      "Task selection and AI limitations",
+      "Clear instructions and context",
+      "Meeting and email examples",
+      "Source and output review",
+      "Implementation plan and Q&A"
+    ]
+  },
+  cohorts: [
+    {
+      id: "cohort-a",
+      name: { tr: "Cohort A Canlı Workshop", en: "Cohort A Live Workshop" },
+      date: { tr: "14 Kasım 2026 Cumartesi", en: "Saturday, November 14, 2026" },
+      time: { tr: "12:00 - 15:00 (TSİ)", en: "12:00 - 15:00 (TRT / UTC+3)" },
+      paytrUrl: "https://www.paytr.com/link/BXgOERV",
+      capacity: 20,
+      minCapacity: 10
+    },
+    {
+      id: "cohort-b",
+      name: { tr: "Cohort B Canlı Workshop", en: "Cohort B Live Workshop" },
+      date: { tr: "15 Kasım 2026 Pazar", en: "Sunday, November 15, 2026" },
+      time: { tr: "12:00 - 15:00 (TSİ)", en: "12:00 - 15:00 (TRT / UTC+3)" },
+      paytrUrl: "https://www.paytr.com/link/aaCEqrN",
+      capacity: 20,
+      minCapacity: 10
+    }
+  ]
+};
+
+// 3. DİĞER AÇIK EĞİTİMLER (ÖN TALEP)
+export const openEducations: Education[] = [
   {
     id: "op-1",
     slug: "prompt-ve-gorev-tasarimi",
@@ -501,7 +554,7 @@ export const openEducations: Education[] = [
   }
 ];
 
-// 3. KURUMSAL PROGRAMLAR (Teklif Talebi)
+// 4. KURUMSAL PROGRAMLAR (Teklif Talebi)
 export const corporateEducations: Education[] = [
   {
     id: "corp-1",
@@ -815,9 +868,9 @@ export const corporateEducations: Education[] = [
   }
 ];
 
-// Detay sayfalarında arama yapılabilmesi için tüm eğitimlerin toplandığı ana dizi
 export const allEducations: Education[] = [
   freeWebinar,
+  activeWorkshop,
   ...openEducations,
   ...corporateEducations
 ];

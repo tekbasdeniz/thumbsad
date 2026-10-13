@@ -136,8 +136,28 @@ export default async function PolicyPageEn({ params }: { params: Promise<{ slug:
           <p>You may submit your requests under the KVKK, along with a written application that identifies you and explains your request, to the address Esentepe Mah. Büyükdere Cad. No: 193/2, 34394 Şişli/İstanbul, or via the email address you previously provided to the data controller and which is registered in our system, at <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a>. Requests will be processed as soon as possible, depending on the nature of the request, and no later than the timeframe stipulated by law.</p>
 
           <h3>11. Updates to This Policy</h3>
-          <p>This Data Protection and Privacy Policy may be updated in response to changes in our personal data processing procedures or in applicable legislation. The current version is published at <a href="https://www.thumbsad.com/policies/data-protection-privacy" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://www.thumbsad.com/policies/data-protection-privacy</a>.</p>
+          <p>This Data Protection and Privacy Policy may be updated in response to changes in our personal data processing procedures or in applicable legislation. The current version is published at <a href="https://www.thumbsad.com/policies/data-protection-privacy" target="_blank" rel=" noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://www.thumbsad.com/policies/data-protection-privacy</a>.</p>
           <p className="text-sm text-gray-500 font-medium mt-4">Version: 1.0 | Publication Date: August 14, 2026</p>
+        </>
+      )
+    },
+    "distance-sales-and-refund": {
+      title: "Distance Sales Agreement & Cancellation/Refund Policy",
+      content: (
+        <>
+          <h3>Summary of the Distance Sales Agreement</h3>
+          <ul>
+            <li><strong>Seller:</strong> Deniz Tekbaş | ThumbsAd (Tax ID: 8330788117, Zincirlikuyu V.D. - Esentepe Mah. Büyükdere Cad. NO:193/2, Şişli/İSTANBUL)</li>
+            <li><strong>Service:</strong> Online Live Training / Workshop / Webinar Participation.</li>
+            <li><strong>Payment Infrastructure:</strong> Payments are processed through PayTR Payment Services Inc.</li>
+            <li><strong>Right of Withdrawal:</strong> Pursuant to Article 15(ğ) of the Regulation on Distance Contracts, the right of withdrawal cannot be exercised for services performed immediately in an electronic environment or for intangible goods delivered immediately to the consumer. However, ThumbsAd offers a refund for cancellation requests made up to 48 hours before the training session.</li>
+          </ul>
+
+          <h3>Training and Workshop Cancellation/Refund Policies</h3>
+          <p><strong>1. Live Workshop and Webinar Participation:</strong> For purchased live online training and workshop programs, a refund will be issued provided written notice is sent to info@thumbsad.com no later than 48 hours before the training start date.</p>
+          <p><strong>2. Digital Content and Instant Access:</strong> No refunds will be issued for cancellation requests made less than 48 hours before the training begins or if the participant does not join the live session.</p>
+          <p><strong>3. Cancellations by the Organizer:</strong> If ThumbsAd postpones or cancels the training, the participant will receive a 100% refund or, upon the participant’s request, their registration will be transferred to the next available program.</p>
+          <p><strong>4. Refund Process:</strong> Approved refunds will be processed via the PayTR platform and credited to the credit or debit card used for payment within 7–14 business days.</p>
         </>
       )
     },

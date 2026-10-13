@@ -26,13 +26,41 @@ export default async function EducationDetailPageTR({ params }: Props) {
           ← Tüm Eğitimlere Dön
         </Link>
 
-        <div>
-          <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-wider mb-3">
-            Eğitim Dili: {education.language}
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-            {education.title.tr}
-          </h1>
+        {/* 1. AFİŞ GÖRSELİ (Kırpılmadan Orijinal Oranında) */}
+        {education.image && (
+          <div className="w-full overflow-hidden rounded-2xl border border-gray-100 shadow-md bg-gray-50">
+            <img
+              src={education.image}
+              alt={education.title.tr}
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        )}
+
+        {/* 2. BAŞLIK & EĞİTMEN BİLGİSİ */}
+        <div className="space-y-4">
+          <div>
+            <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-wider mb-3">
+              Eğitim Dili: {education.language}
+            </span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-snug">
+              {education.title.tr}
+            </h1>
+          </div>
+
+          {/* Eğitmen Kartı */}
+          {education.instructor && (
+            <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 flex items-center gap-3 w-full sm:w-fit">
+              <div className="w-10 h-10 rounded-full bg-[#0a246b] text-white flex items-center justify-center font-bold text-sm shrink-0">
+                DT
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 font-medium">Eğitmen / Konuşmacı</p>
+                <p className="text-base font-bold text-gray-900">{education.instructor.name}</p>
+                <p className="text-xs text-blue-600 font-medium">{education.instructor.title.tr}</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <p className="text-lg text-gray-600 leading-relaxed border-b border-gray-100 pb-8">
@@ -40,7 +68,7 @@ export default async function EducationDetailPageTR({ params }: Props) {
         </p>
 
         {/* Hedef Kitle */}
-        {education.targetAudience.tr && (
+        {education.targetAudience?.tr && (
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-2">Kimler İçin?</h2>
             <p className="text-gray-600">{education.targetAudience.tr}</p>
@@ -48,7 +76,7 @@ export default async function EducationDetailPageTR({ params }: Props) {
         )}
 
         {/* Program Konuları */}
-        {education.topics.tr.length > 0 && (
+        {education.topics?.tr && education.topics.tr.length > 0 && (
           <div className="space-y-4">
             <h2 className="text-xl font-bold text-gray-900">Program Akışı ve Konular</h2>
             <ul className="space-y-3">

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { freeWebinar, openEducations, corporateEducations } from '../../data/educations';
+import { freeWebinar, activeWorkshop, openEducations, corporateEducations } from '../../data/educations';
 
 export default function EducationsPageTR() {
   return (
@@ -19,7 +19,7 @@ export default function EducationsPageTR() {
           </p>
         </div>
 
-        {/* 1. ÜCRETSİZ WEBİNAR KARTI (Tıklanabilir) */}
+        {/* 1. ÜCRETSİZ WEBİNAR KARTI */}
         <Link 
           href={`/educations/${freeWebinar.slug}`}
           className="block bg-[#0a246b] text-white rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group cursor-pointer"
@@ -51,7 +51,91 @@ export default function EducationsPageTR() {
           </div>
         </Link>
 
-        {/* 2. GELECEK PROGRAMLAR (ÖN TALEP) */}
+        {/* 2. AKTİF İLK EĞİTİM (WORKSHOP & COHORTS) */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+              Aktif Programlar
+            </h2>
+            <span className="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full uppercase tracking-wider">
+              İlk Eğitime Özel Fiyat
+            </span>
+          </div>
+
+          <div className="bg-white border-2 border-blue-600/20 rounded-3xl p-6 sm:p-8 shadow-xl hover:border-blue-600/40 transition-all">
+            <div className="flex flex-col lg:flex-row justify-between gap-8">
+              <div className="space-y-4 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                    {activeWorkshop.duration.tr}
+                  </span>
+                  <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">
+                    Canlı Workshop
+                  </span>
+                  <span className="text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                    Dili: {activeWorkshop.language}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-extrabold text-gray-900 leading-snug">
+                  {activeWorkshop.title.tr}
+                </h3>
+                
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  {activeWorkshop.shortDescription.tr}
+                </p>
+
+                {/* Eğitmen Etiketi */}
+                {activeWorkshop.instructor && (
+                  <div className="flex items-center gap-2 pt-1 text-sm text-gray-700">
+                    <span className="text-gray-500 font-medium">Eğitmen:</span>
+                    <span className="font-bold text-gray-900 bg-gray-100 px-3 py-1 rounded-lg border border-gray-200">
+                      {activeWorkshop.instructor.name}
+                    </span>
+                    <span className="text-xs text-blue-600 font-semibold hidden sm:inline">
+                      ({activeWorkshop.instructor.title.tr})
+                    </span>
+                  </div>
+                )}
+
+                <div className="pt-2">
+                  <span className="text-2xl font-black text-[#0a246b]">
+                    {activeWorkshop.price} TL <span className="text-xs font-semibold text-gray-500">+ KDV</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Cohort Seçim & Detay Butonları */}
+              <div className="w-full lg:w-80 flex flex-col justify-between space-y-4 bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Grup (Cohort) Seçeneğinizi Belirleyin:
+                </span>
+                
+                <div className="space-y-2">
+                  {activeWorkshop.cohorts?.map((cohort) => (
+                    <div key={cohort.id} className="p-3 bg-white rounded-xl border border-gray-200 text-xs space-y-1">
+                      <div className="font-bold text-gray-900 flex justify-between">
+                        <span>{cohort.name.tr}</span>
+                        <span className="text-blue-700 font-extrabold">20 Kişilik Kontenjan</span>
+                      </div>
+                      <div className="text-gray-600">📅 {cohort.date.tr}</div>
+                      <div className="text-gray-500">⏰ {cohort.time.tr}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/educations/${activeWorkshop.slug}`}
+                  className="w-full text-center bg-[#0a246b] hover:bg-blue-900 text-white font-bold py-3.5 rounded-xl transition-all text-sm shadow-md block"
+                >
+                  Gruba Katıl & Detayları Gör →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. GELECEK PROGRAMLAR (ÖN TALEP) */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Gelecek Programlar
@@ -89,7 +173,7 @@ export default function EducationsPageTR() {
           </div>
         </div>
 
-        {/* 3. KURUMSAL PROGRAMLAR */}
+        {/* 4. KURUMSAL PROGRAMLAR */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Kurumsal Eğitim Programları

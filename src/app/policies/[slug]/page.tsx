@@ -110,8 +110,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
           <p>Kişisel verileriniz; web sitesi formları, Google Forms veya benzeri araştırma formları, e-posta, etkinlik ve canlı yayın kayıtları, demo/erken erişim başvuruları ve bu kanallardaki otomatik teknik kayıtlar aracılığıyla elektronik ortamda toplanır.</p>
 
           <h3>6. Kişisel Verilerin Aktarılması</h3>
-          <p>Kişisel verileriniz, yukarıdaki amaçlarla sınırlı ve gerekli olduğu ölçüde; barındırma, bulut depolama, e-posta gönderimi, form, analiz, müşteri ilişkileri ve teknik destek hizmeti aldığımız tedarikçilere; hukuk, mali müşavirlik ve bilgi teknolojileri danışmanlarına; ayrıca kanunen yetkili kamu kurum ve kuruluşlarına aktarılabilir.</p>
-          <p>Yurt dışında bulunan veya verileri yurt dışında saklayan hizmet sağlayıcıların kullanılması hâlinde aktarımlar, KVKK’nın 9’uncu maddesinde düzenlenen yurt dışına aktarım şartları ve uygun güvenceler çerçevesinde gerçekleştirilir.</p>
+          <p>Kişisel verileriniz, yukarıdaki amaçlarla sınırlı ve gerekli olduğu ölçüde; barındırma, bulut depolama, e-posta gönderimi, form, analiz, müşteri ilişkileri ve teknik destek hizmeti aldığımız tedarikçilere; hukuk, mali müşavirlik ve bilgi teknolojileri danışmanlarına; ayrıca kanunen yetkili kamu kurum ve kuruluşlarına aktarılabilir.</p>          <p>Yurt dışında bulunan veya verileri yurt dışında saklayan hizmet sağlayıcıların kullanılması hâlinde aktarımlar, KVKK’nın 9’uncu maddesinde düzenlenen yurt dışına aktarım şartları ve uygun güvenceler çerçevesinde gerçekleştirilir.</p>
 
           <h3>7. Saklama Süresi</h3>
           <p>Kişisel verileriniz, işlendikleri amaç için gerekli süre boyunca ve ilgili mevzuatta öngörülen yasal saklama süreleri çerçevesinde muhafaza edilir. İletişim izninizi geri çekmeniz veya üyelikten ayrılmanız hâlinde pazarlama iletişimi durdurulur; izin, ret ve işlem kayıtları hukuki yükümlülükler ile hakların tesisi, kullanılması veya korunması için gerekli süre boyunca sınırlı olarak saklanabilir. Sürelerin sonunda veriler silinir, yok edilir veya anonim hâle getirilir.</p>
@@ -136,8 +135,28 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
           <p>KVKK kapsamındaki taleplerinizi, kimliğinizi ve talebinizi açıklayan başvurunuzla birlikte Esentepe Mah. Büyükdere Cad. No: 193/2, 34394 Şişli/İstanbul adresine yazılı olarak veya veri sorumlusuna daha önce bildirdiğiniz ve sistemimizde kayıtlı bulunan e-posta adresiniz aracılığıyla <a href="mailto:info@thumbsad.com" className="text-[#0a246b] font-semibold hover:underline">info@thumbsad.com</a> adresine iletebilirsiniz. Başvurular, talebin niteliğine göre mümkün olan en kısa sürede ve en geç mevzuatta öngörülen süre içinde sonuçlandırılır.</p>
 
           <h3>11. Metnin Güncellenmesi</h3>
-          <p>Bu Veri Koruma ve Gizlilik Metni, kişisel veri işleme süreçlerimizde veya ilgili mevzuatta meydana gelebilecek değişikliklere bağlı olarak güncellenebilir. Güncel metin <a href="https://www.thumbsad.com/policies/data-protection-privacy" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://www.thumbsad.com/policies/data-protection-privacy</a> adresinde yayımlanır.</p>
+          <p>Bu Veri Koruma ve Gizlilik Metni, kişisel veri işleme süreçlerimizde veya ilgili mevzuatta meydana gelebilecek değişikliklere bağlı olarak güncelleni. Güncel metin <a href="https://www.thumbsad.com/policies/data-protection-privacy" target="_blank" rel="noopener noreferrer" className="text-[#0a246b] font-semibold hover:underline">https://www.thumbsad.com/policies/data-protection-privacy</a> adresinde yayımlanır.</p>
           <p className="text-sm text-gray-500 font-medium mt-4">Versiyon: 1.0 | Yayın tarihi: 14.08.2026</p>
+        </>
+      )
+    },
+    "distance-sales-and-refund": {
+      title: "Mesafeli Satış Sözleşmesi & İptal ve İade Koşulları",
+      content: (
+        <>
+          <h3>Mesafeli Satış Sözleşmesi Özeti</h3>
+          <ul>
+            <li><strong>Satıcı:</strong> Deniz Tekbaş | ThumbsAd (Vergi No: 8330788117, Zincirlikuyu V.D. - Esentepe Mah. Büyükdere Cad. NO:193/2, Şişli/İSTANBUL)</li>
+            <li><strong>Hizmet:</strong> Online Canlı Eğitim / Workshop / Webinar Katılımı.</li>
+            <li><strong>Ödeme Altyapısı:</strong> Ödemeler PayTR Ödeme Hizmetleri A.Ş. güvencesiyle tahsil edilir.</li>
+            <li><strong>Cayma Hakkı:</strong> Mesafeli Sözleşmeler Yönetmeliği’nin 15. maddesi (ğ) bendi uyarınca; elektronik ortamda anında ifa edilen hizmetler ve tüketiciye anında teslim edilen gayrimaddi mallarda cayma hakkı kullanılamaz. Ancak ThumbsAd, eğitim saatinden 48 saat öncesine kadar yapılan iptal taleplerinde iade kolaylığı sağlar.</li>
+          </ul>
+
+          <h3>Eğitim ve Workshop İptal / İade Koşulları</h3>
+          <p><strong>1. Canlı Workshop ve Webinar Katılımları:</strong> Satın alınan canlı online eğitim ve workshop programlarında, eğitimin başlama tarihinden en geç 48 saat öncesine kadar info@thumbsad.com adresine yazılı bildirimde bulunulması şartıyla ücret iadesi yapılır.</p>
+          <p><strong>2. Dijital İçerik ve Anında Erişim:</strong> Eğitimin başlamasına 48 saatten az kala yapılan iptal taleplerinde veya canlı yayına katılım sağlanmaması durumunda ücret iadesi yapılmaz.</p>
+          <p><strong>3. Organizatör Kaynaklı İptaller:</strong> ThumbsAd tarafından eğitimin ertelenmesi veya iptal edilmesi durumunda, katılımcıya %100 ücret iadesi yapılır veya katılımcının talebi doğrultusunda bir sonraki programa kayıt aktarılır.</p>
+          <p><strong>4. İade Süreci:</strong> Onaylanan iadeler, ödemenin yapıldığı kredi/banka kartına PayTR altyapısı üzerinden 7-14 iş günü içerisinde aktarılır.</p>
         </>
       )
     },

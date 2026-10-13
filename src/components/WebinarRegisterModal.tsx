@@ -10,6 +10,8 @@ interface WebinarRegisterModalProps {
   lang?: 'tr' | 'en';
 }
 
+const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/GECERLI_APPS_SCRIPT_URL_BURAYA/exec";
+
 export default function WebinarRegisterModal({
   isOpen,
   onClose,
@@ -24,7 +26,6 @@ export default function WebinarRegisterModal({
 
   if (!isOpen) return null;
 
-  // Başlıkta "webinar" geçiyor mu VEYA webinar başlığı mı kontrolü
   const titleLower = programTitle.toLowerCase();
   const isWebinar =
     titleLower.includes('webinar') ||
@@ -33,10 +34,15 @@ export default function WebinarRegisterModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!marketingConsent) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-        const scriptUrl = process.env.NEXT_PUBLIC_WEBINAR_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxPiC8VKBuN0XWgg5PZNkM0lt3S8SrExO14p06c2hzWxkv0mYMvThQvYUK7WzB4akN1/exec";
+      const scriptUrl = process.env.NEXT_PUBLIC_WEBINAR_SCRIPT_URL || DEFAULT_SCRIPT_URL;
 
       if (!scriptUrl) {
         throw new Error('Script URL is not defined');
@@ -118,6 +124,16 @@ export default function WebinarRegisterModal({
                 <input
                   type="text"
                   required
+                  onInvalid={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity(
+                      lang === 'en' ? 'Please fill out this field.' : 'Lütfen bu alanı doldurun.'
+                    );
+                  }}
+                  onInput={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity('');
+                  }}
                   placeholder={lang === 'en' ? 'e.g. John Doe' : 'Örn: Ahmet Yılmaz'}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
@@ -132,6 +148,16 @@ export default function WebinarRegisterModal({
                 <input
                   type="email"
                   required
+                  onInvalid={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity(
+                      lang === 'en' ? 'Please fill out this field.' : 'Lütfen bu alanı doldurun.'
+                    );
+                  }}
+                  onInput={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity('');
+                  }}
                   placeholder={lang === 'en' ? 'john@example.com' : 'ahmet@ornek.com'}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -143,8 +169,21 @@ export default function WebinarRegisterModal({
                 <input
                   type="checkbox"
                   id="marketingConsent"
+                  required
                   checked={marketingConsent}
                   onChange={(e) => setMarketingConsent(e.target.checked)}
+                  onInvalid={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity(
+                      lang === 'en'
+                        ? 'Please check this box if you want to proceed.'
+                        : 'İlerlemek istiyorsanız lütfen bu kutuyu işaretleyin.'
+                    );
+                  }}
+                  onInput={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity('');
+                  }}
                   className="mt-1 h-4 w-4 rounded border-gray-300 text-[#0a246b] focus:ring-[#0a246b]"
                 />
                 <label htmlFor="marketingConsent" className="text-xs text-gray-600 leading-relaxed cursor-pointer">
@@ -204,8 +243,8 @@ export default function WebinarRegisterModal({
             <p className="text-sm font-medium text-gray-700 leading-relaxed">
               {isWebinar
                 ? lang === 'en'
-                  ? 'We will send the access details for the Saturday, Oct 17 (12:00-13:00) webinar to your email address.'
-                  : '17 Ekim 12.00-13.00 webinarının katılım bilgilerini e-posta adresinize göndereceğiz.'
+                  ? 'We will send the access details for the Saturday, Oct 24 (12:00-13:00) webinar to your email address.'
+                  : '24 Ekim Cumartesi 12.00-13.00 webinarının katılım bilgilerini e-posta adresinize göndereceğiz.'
                 : lang === 'en'
                 ? 'We will notify you via email as soon as new schedule dates are announced.'
                 : 'Yeni tarih açıldığında e-posta adresinize bilgilendirme göndereceğiz.'}
