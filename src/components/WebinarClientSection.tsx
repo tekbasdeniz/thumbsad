@@ -46,7 +46,7 @@ export default function WebinarClientSection({
                 : 'We will reach out as soon as new dates are announced.'
             ) : (
               educationType === 'webinar'
-                ? '17 Ekim Cumartesi 12:00-13:00 webinar katılım bağlantısı e-posta adresinize iletilecektir.'
+                ? '24 Ekim Cumartesi 12:00-13:00 webinar katılım bağlantısı e-posta adresinize iletilecektir.'
                 : educationType === 'corporate'
                 ? 'Ekibinizin ihtiyaçlarına özel içerik ve fiyatlandırma için iletişime geçin.'
                 : 'Yeni tarih açıldığında ilk sizinle iletişime geçelim.'
