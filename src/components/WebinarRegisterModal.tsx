@@ -10,7 +10,7 @@ interface WebinarRegisterModalProps {
   lang?: 'tr' | 'en';
 }
 
-const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/GECERLI_APPS_SCRIPT_URL_BURAYA/exec";
+const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztAxAj9p27Af3twfxUYOapjhJ5HckRMmjTTV3sCzz0XM0APwDSD3ZQy7eNXMpqjjbD/exec";
 
 export default function WebinarRegisterModal({
   isOpen,
