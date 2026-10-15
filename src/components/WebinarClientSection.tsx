@@ -40,7 +40,7 @@ export default function WebinarClientSection({
           <span className="text-sm text-gray-600">
             {lang === 'en' ? (
               educationType === 'webinar'
-                ? 'Webinar access link for Saturday, October 17 (12:00-13:00) will be sent to your email.'
+                ? 'Webinar access link for Saturday, October 24 (12:00-13:00) will be sent to your email.'
                 : educationType === 'corporate'
                 ? 'Contact us for tailored content and pricing for your team.'
                 : 'We will reach out as soon as new dates are announced.'
