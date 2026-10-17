@@ -1,3 +1,13 @@
+import { localizedMetadata, SITE_URL, safeJsonLd } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const education = allEducations.find((item) => item.slug === slug);
+  if (!education) return { title: "ThumbsAd" };
+  return localizedMetadata(`educations/${slug}`, "tr", `${education.title.tr} | ThumbsAd`, education.description.tr || education.shortDescription.tr);
+}
+
 import { allEducations } from '../../../data/educations';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -16,7 +26,20 @@ export default async function EducationDetailPageTR({ params }: Props) {
     notFound();
   }
 
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: education.title.tr,
+    description: education.description.tr,
+    inLanguage: "tr",
+    url: `${SITE_URL}/educations/${education.slug}`,
+    provider: { "@type": "Organization", name: "ThumbsAd", url: SITE_URL },
+    ...(education.instructor ? { instructor: { "@type": "Person", name: education.instructor.name } } : {}),
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(courseSchema) }} />
     <div className="min-h-screen bg-[#f8fafc] pt-32 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-sm p-8 sm:p-10 border border-gray-100 space-y-8">
         <Link
@@ -127,5 +150,6 @@ export default async function EducationDetailPageTR({ params }: Props) {
         )}
       </div>
     </div>
+    </>
   );
 }

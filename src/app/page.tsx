@@ -1,3 +1,4 @@
+import { localizedMetadata } from "@/lib/seo";
 import ExperiencesMarquee from "@/components/sections/ExperiencesMarquee";
 import TruOptSection from "@/components/sections/TruOptSection";
 import Hero from "@/components/sections/Hero";
@@ -6,6 +7,8 @@ import Capabilities from "@/components/sections/Capabilities";
 import InsightsSection from "@/components/sections/InsightsSection";
 import { client } from "@/sanity/lib/client";
 import { getLocalizedPostsQuery } from "@/sanity/lib/queries";
+
+export const metadata = localizedMetadata("", "tr", "ThumbsAd | İleri Düzey Dijital Projeler İçin AI Growth Partner", "Büyüme stratejisi, yapay zeka sistemleri ve uygulamayı bir araya getiren proje odaklı yapı.");
 
 export const revalidate = 60;
 

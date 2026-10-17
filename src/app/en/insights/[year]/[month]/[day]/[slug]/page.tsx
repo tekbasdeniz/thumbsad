@@ -1,3 +1,4 @@
+import { localizedMetadata, SITE_URL, safeJsonLd } from "@/lib/seo";
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -59,10 +60,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         if (!post) {
             return { title: 'Insight Not Found | ThumbsAd' };
         }
-        return {
-            title: `${post?.title || 'Insights'} | ThumbsAd Insights`,
-            description: post?.excerpt_en || post?.excerpt || undefined,
-        };
+        const articlePath = `insights/${resolvedParams.year}/${resolvedParams.month}/${resolvedParams.day}/${resolvedParams.slug}`;
+        return localizedMetadata(articlePath, "en", `${post.title} | ThumbsAd Insights`, post.excerpt_en || post.excerpt || "ThumbsAd Insights");
     } catch (error) {
         console.error('Error generating metadata for insights detail (EN):', error);
         return { title: 'Insights | ThumbsAd' };
@@ -116,7 +115,23 @@ export default async function Page({ params }: PageProps) {
         }
     }
 
+    const articleUrl = `${SITE_URL}/en/insights/${year}/${month}/${day}/${slug}`;
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description: excerpt,
+        inLanguage: "en",
+        mainEntityOfPage: articleUrl,
+        author: { "@type": "Person", name: authorName },
+        publisher: { "@type": "Organization", name: "ThumbsAd", url: SITE_URL },
+        ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
+        ...(imageUrl ? { image: imageUrl } : {}),
+    };
+
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(articleSchema) }} />
         <main className="w-full bg-white">
             <article className="w-full max-w-4xl mx-auto px-6 pt-16 md:pt-20 pb-12 md:pb-16">
                 {/* 1. English Category name at top (category_en - plain text) */}
@@ -165,5 +180,6 @@ export default async function Page({ params }: PageProps) {
                 <InsightsCTA lang="en" />
             </article>
         </main>
+        </>
     );
 }

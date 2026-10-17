@@ -1,13 +1,12 @@
+import { localizedMetadata } from "@/lib/seo";
 import { Metadata } from 'next';
 import { client } from '@/sanity/lib/client';
 import { getLocalizedPostsQuery } from '@/sanity/lib/queries';
 import BlogCard from '@/components/sections/BlogCard';
 import InsightsForm from '@/components/InsightsForm';
 
-export const metadata: Metadata = {
-    title: 'İçgörüler | ThumbsAd',
-    description: 'Yapay zeka, kurumsal büyüme ve dijital pazarlama alanındaki son içgörüler, trendler ve gelişmeler.',
-};
+
+export const metadata = localizedMetadata("insights", "tr", "İçgörüler | ThumbsAd", "Yapay zeka, kurumsal büyüme ve dijital pazarlama alanındaki içgörüler ve gelişmeler.");
 
 export const revalidate = 60;
 
