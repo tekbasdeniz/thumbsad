@@ -19,39 +19,7 @@ export default function EducationsPageEN() {
           </p>
         </div>
 
-        {/* 1. FREE WEBINAR CARD */}
-        <Link 
-          href={`/en/educations/${freeWebinar.slug}`}
-          className="block bg-[#0a246b] text-white rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group cursor-pointer"
-        >
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 relative z-10">
-            <div className="space-y-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-block px-3 py-1 bg-white/10 text-blue-200 border border-white/20 text-xs font-bold rounded-md uppercase tracking-wider">
-                  Free Live Webinar
-                </span>
-                <span className="inline-block px-3 py-1 bg-white/10 text-blue-200 border border-white/20 text-xs font-bold rounded-md uppercase tracking-wider">
-                  Language: {freeWebinar.language}
-                </span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-blue-200 transition-colors">
-                {freeWebinar.title.en}
-              </h2>
-              <p className="text-blue-100/90 max-w-2xl text-base leading-relaxed">
-                {freeWebinar.shortDescription.en}
-              </p>
-              <div className="flex flex-wrap gap-6 pt-2 text-sm text-blue-200 font-medium">
-                <span>📅 {freeWebinar.date?.en}</span>
-                <span>⏰ {freeWebinar.time?.en}</span>
-              </div>
-            </div>
-            <span className="w-full lg:w-auto text-center bg-white text-[#0a246b] group-hover:bg-blue-50 font-bold px-8 py-3.5 rounded-2xl transition-all shadow-md whitespace-nowrap">
-              Explore & Register →
-            </span>
-          </div>
-        </Link>
-
-        {/* 2. ACTIVE WORKSHOP & COHORTS */}
+        {/* 1. ACTIVE WORKSHOP & COHORTS */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
@@ -137,7 +105,7 @@ export default function EducationsPageEN() {
           </div>
         </div>
 
-        {/* 3. UPCOMING PROGRAMS (PRE-ORDER) */}
+        {/* 2. UPCOMING PROGRAMS (PRE-ORDER) */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Upcoming Programs
@@ -175,7 +143,7 @@ export default function EducationsPageEN() {
           </div>
         </div>
 
-        {/* 4. CORPORATE PROGRAMS */}
+        {/* 3. CORPORATE PROGRAMS */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Corporate Training Programs
@@ -207,6 +175,38 @@ export default function EducationsPageEN() {
             ))}
           </div>
         </div>
+
+        {/* 4. CONCLUDED WEBINAR CARD (Moved to Bottom) */}
+        <Link 
+          href={`/en/educations/${freeWebinar.slug}`}
+          className="block bg-[#0a246b] text-white rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group cursor-pointer"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 relative z-10">
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-block px-3 py-1 bg-white/20 text-white border border-white/30 text-xs font-bold rounded-md uppercase tracking-wider">
+                  This Event Has Ended
+                </span>
+                <span className="inline-block px-3 py-1 bg-white/10 text-blue-200 border border-white/20 text-xs font-bold rounded-md uppercase tracking-wider">
+                  Language: {freeWebinar.language}
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-blue-200 transition-colors">
+                {freeWebinar.title.en}
+              </h2>
+              <p className="text-blue-100/90 max-w-2xl text-base leading-relaxed">
+                {freeWebinar.shortDescription.en}
+              </p>
+              <div className="flex flex-wrap gap-6 pt-2 text-sm text-blue-200 font-medium">
+                <span>📅 {freeWebinar.date?.en}</span>
+                <span>⏰ {freeWebinar.time?.en}</span>
+              </div>
+            </div>
+            <span className="w-full lg:w-auto text-center bg-white text-[#0a246b] group-hover:bg-blue-50 font-bold px-8 py-3.5 rounded-2xl transition-all shadow-md whitespace-nowrap">
+              View Event Details →
+            </span>
+          </div>
+        </Link>
 
       </div>
     </div>

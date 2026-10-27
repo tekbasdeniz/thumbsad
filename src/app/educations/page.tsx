@@ -19,39 +19,7 @@ export default function EducationsPageTR() {
           </p>
         </div>
 
-        {/* 1. ÜCRETSİZ WEBİNAR KARTI */}
-        <Link 
-          href={`/educations/${freeWebinar.slug}`}
-          className="block bg-[#0a246b] text-white rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group cursor-pointer"
-        >
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 relative z-10">
-            <div className="space-y-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-block px-3 py-1 bg-white/10 text-blue-200 border border-white/20 text-xs font-bold rounded-md uppercase tracking-wider">
-                  Ücretsiz Canlı Webinar
-                </span>
-                <span className="inline-block px-3 py-1 bg-white/10 text-blue-200 border border-white/20 text-xs font-bold rounded-md uppercase tracking-wider">
-                  Eğitim Dili: {freeWebinar.language}
-                </span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-blue-200 transition-colors">
-                {freeWebinar.title.tr}
-              </h2>
-              <p className="text-blue-100/90 max-w-2xl text-base leading-relaxed">
-                {freeWebinar.shortDescription.tr}
-              </p>
-              <div className="flex flex-wrap gap-6 pt-2 text-sm text-blue-200 font-medium">
-                <span>📅 {freeWebinar.date?.tr}</span>
-                <span>⏰ {freeWebinar.time?.tr}</span>
-              </div>
-            </div>
-            <span className="w-full lg:w-auto text-center bg-white text-[#0a246b] group-hover:bg-blue-50 font-bold px-8 py-3.5 rounded-2xl transition-all shadow-md whitespace-nowrap">
-              Detaylı İncele ve Kaydol →
-            </span>
-          </div>
-        </Link>
-
-        {/* 2. AKTİF İLK EĞİTİM (WORKSHOP & COHORTS) */}
+        {/* 1. AKTİF İLK EĞİTİM (WORKSHOP & COHORTS) */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
@@ -108,7 +76,7 @@ export default function EducationsPageTR() {
               {/* Cohort Seçim & Detay Butonları */}
               <div className="w-full lg:w-80 flex flex-col justify-between space-y-4 bg-gray-50 p-5 rounded-2xl border border-gray-100">
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                  Grup (Cohort) Seçeneğinizi Belirleyin:
+                  Grup Seçeneğinizi Belirleyin:
                 </span>
                 
                 <div className="space-y-2">
@@ -135,7 +103,7 @@ export default function EducationsPageTR() {
           </div>
         </div>
 
-        {/* 3. GELECEK PROGRAMLAR (ÖN TALEP) */}
+        {/* 2. GELECEK PROGRAMLAR (ÖN TALEP) */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Gelecek Programlar
@@ -173,7 +141,7 @@ export default function EducationsPageTR() {
           </div>
         </div>
 
-        {/* 4. KURUMSAL PROGRAMLAR */}
+        {/* 3. KURUMSAL PROGRAMLAR */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Kurumsal Eğitim Programları
@@ -205,6 +173,38 @@ export default function EducationsPageTR() {
             ))}
           </div>
         </div>
+
+        {/* 4. TAMAMLANAN WEBİNAR KARTI (Sayfanın En Altında) */}
+        <Link 
+          href={`/educations/${freeWebinar.slug}`}
+          className="block bg-[#0a246b] text-white rounded-3xl p-8 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group cursor-pointer"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 relative z-10">
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-block px-3 py-1 bg-white/20 text-white border border-white/30 text-xs font-bold rounded-md uppercase tracking-wider">
+                  Bu Etkinlik Tamamlandı
+                </span>
+                <span className="inline-block px-3 py-1 bg-white/10 text-blue-200 border border-white/20 text-xs font-bold rounded-md uppercase tracking-wider">
+                  Eğitim Dili: {freeWebinar.language}
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-blue-200 transition-colors">
+                {freeWebinar.title.tr}
+              </h2>
+              <p className="text-blue-100/90 max-w-2xl text-base leading-relaxed">
+                {freeWebinar.shortDescription.tr}
+              </p>
+              <div className="flex flex-wrap gap-6 pt-2 text-sm text-blue-200 font-medium">
+                <span>📅 {freeWebinar.date?.tr}</span>
+                <span>⏰ {freeWebinar.time?.tr}</span>
+              </div>
+            </div>
+            <span className="w-full lg:w-auto text-center bg-white text-[#0a246b] group-hover:bg-blue-50 font-bold px-8 py-3.5 rounded-2xl transition-all shadow-md whitespace-nowrap">
+              Etkinlik Detaylarını İncele →
+            </span>
+          </div>
+        </Link>
 
       </div>
     </div>

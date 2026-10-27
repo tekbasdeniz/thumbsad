@@ -27,7 +27,7 @@ export default async function EducationDetailPageEN({ params }: Props) {
     <div className="min-h-screen bg-[#f8fafc] pt-32 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-sm p-8 sm:p-10 border border-gray-100 space-y-8">
         
-        {/* Back Link (TR ile Birebir Aynı Hizada) */}
+        {/* Back Link */}
         <Link 
           href="/en/educations" 
           className="text-sm font-semibold text-gray-500 hover:text-[#0a246b] transition-colors inline-block"
@@ -35,7 +35,7 @@ export default async function EducationDetailPageEN({ params }: Props) {
           ← Back to All Programmes
         </Link>
 
-        {/* 1. POSTER BANNER (Full width & uncropped) */}
+        {/* 1. POSTER BANNER */}
         {education.image && (
           <div className="w-full overflow-hidden rounded-2xl border border-gray-100 shadow-md bg-gray-50">
             <img
@@ -46,7 +46,7 @@ export default async function EducationDetailPageEN({ params }: Props) {
           </div>
         )}
 
-        {/* 2. TITLE & INSTRUCTOR INFO */}
+        {/* 2. TITLE, SUBTITLE & INSTRUCTOR INFO */}
         <div className="space-y-4">
           <div>
             <span className="inline-block text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-wider mb-3">
@@ -55,6 +55,11 @@ export default async function EducationDetailPageEN({ params }: Props) {
             <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-snug">
               {education.title.en}
             </h1>
+            {education.shortDescription?.en && (
+              <p className="text-lg font-medium text-gray-700 mt-2">
+                {education.shortDescription.en}
+              </p>
+            )}
           </div>
 
           {/* Instructor Card */}
@@ -72,39 +77,82 @@ export default async function EducationDetailPageEN({ params }: Props) {
           )}
         </div>
 
-        <p className="text-lg text-gray-600 leading-relaxed border-b border-gray-100 pb-8">
+        {/* Training Description */}
+        <p className="text-base sm:text-lg text-gray-600 leading-relaxed border-b border-gray-100 pb-8">
           {education.description.en || education.shortDescription.en}
         </p>
 
-        {/* Who is this for? */}
+        {/* Who Should Attend? */}
         {education.targetAudience?.en && (
           <div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">Who is this for?</h2>
-            <p className="text-gray-600">{education.targetAudience.en}</p>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Who Should Attend?</h2>
+            <p className="text-gray-600 leading-relaxed">{education.targetAudience.en}</p>
           </div>
         )}
 
-        {/* Programme Outline & Topics */}
+        {/* Training Agenda */}
         {education.topics?.en && education.topics.en.length > 0 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-gray-900">Programme Outline & Topics</h2>
+            <h2 className="text-xl font-bold text-gray-900">Training Agenda</h2>
             <ul className="space-y-3">
-              {education.topics.en.map((topic, index) => (
-                <li key={index} className="flex items-start bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                  <span className="flex-shrink-0 w-6 h-6 bg-[#0a246b] text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
-                    {index + 1}
-                  </span>
-                  <span className="text-gray-800 font-medium">{topic}</span>
-                </li>
-              ))}
+              {education.topics.en.map((topic, index) => {
+                const isBreakOrQA = topic.startsWith('Break') || topic.startsWith('Review & Q&A');
+                return (
+                  <li
+                    key={index}
+                    className={`flex items-start p-4 rounded-2xl border ${
+                      isBreakOrQA
+                        ? 'bg-blue-50/50 border-blue-100 text-blue-900 font-semibold'
+                        : 'bg-gray-50 border-gray-100 text-gray-800 font-medium'
+                    }`}
+                  >
+                    <span className="flex-shrink-0 w-2 h-2 rounded-full bg-[#0a246b] mt-2 mr-3" />
+                    <span className="leading-relaxed">{topic}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}
 
-        {/* Cohort List */}
-        {education.cohorts && (
+        {/* What Will You Learn? */}
+        {education.outcomes?.en && education.outcomes.en.length > 0 && (
           <div className="space-y-4 pt-4 border-t border-gray-100">
-            <h2 className="text-xl font-bold text-gray-900">Cohort Options</h2>
+            <h2 className="text-xl font-bold text-gray-900">What Will You Learn?</h2>
+            <ul className="grid grid-cols-1 gap-3">
+              {education.outcomes.en.map((outcome, index) => {
+                const isBonus = outcome.startsWith('Bonus:');
+                return (
+                  <li
+                    key={index}
+                    className={`flex items-start p-4 rounded-2xl border ${
+                      isBonus
+                        ? 'bg-amber-50/60 border-amber-200 text-amber-950 font-semibold'
+                        : 'bg-gray-50 border-gray-100 text-gray-700'
+                    }`}
+                  >
+                    <span className="text-emerald-600 font-bold mr-3 shrink-0">✓</span>
+                    <span className="leading-relaxed">{outcome}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+
+        {/* Dates & Pricing (Cohort List) */}
+        {education.cohorts && (
+          <div className="space-y-4 pt-6 border-t border-gray-100">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">Dates & Pricing</h2>
+              <p className="text-sm text-gray-600 mt-1">
+                Both dates offer the same workshop. Participants only need to select one session.
+              </p>
+              <p className="text-xs text-gray-500 mt-0.5 font-medium">
+                Duration: {education.duration.en} | Price: TRY {education.price} + VAT
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {education.cohorts.map((cohort) => (
                 <div key={cohort.id} className="p-6 bg-gray-50 rounded-2xl border border-gray-200 flex flex-col justify-between space-y-4">
@@ -117,9 +165,9 @@ export default async function EducationDetailPageEN({ params }: Props) {
                     href={cohort.paytrUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-[#0a246b] hover:bg-blue-900 text-white text-center font-bold py-3 rounded-xl transition-all text-sm block"
+                    className="w-full bg-[#0a246b] hover:bg-blue-900 text-white text-center font-bold py-3 rounded-xl transition-all text-sm block shadow-sm"
                   >
-                    Register for this Cohort ({education.price} TRY + VAT)
+                    Register for this Cohort (TRY {education.price} + VAT)
                   </a>
                 </div>
               ))}
@@ -127,13 +175,29 @@ export default async function EducationDetailPageEN({ params }: Props) {
           </div>
         )}
 
-        {/* Webinar / Open Client Section CTA */}
-        {!education.cohorts && (
-          <WebinarClientSection
-            educationType={education.type}
-            educationTitle={education.title.en}
-            lang="en"
-          />
+        {/* Webinar Concluded Notice / Registration Form */}
+        {education.status === 'completed' ? (
+          <div className="pt-6 border-t border-gray-100">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center sm:text-left">
+              <span className="inline-block px-3 py-1 bg-slate-200 text-slate-700 text-xs font-bold rounded-full uppercase tracking-wider mb-2">
+                This Event Has Ended
+              </span>
+              <p className="text-gray-900 font-semibold text-base sm:text-lg">
+                This webinar concluded on October 24, 2026.
+              </p>
+              <p className="text-gray-500 text-sm mt-1">
+                Please follow our website for future live sessions and webinar announcements, and join our community.
+              </p>
+            </div>
+          </div>
+        ) : (
+          !education.cohorts && (
+            <WebinarClientSection
+              educationType={education.type}
+              educationTitle={education.title.en}
+              lang="en"
+            />
+          )
         )}
 
       </div>

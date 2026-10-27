@@ -32,7 +32,7 @@ export interface Education {
   currency: string;
   duration: { tr: string; en: string };
   language: string;
-  status: 'active' | 'preorder' | 'quote';
+  status: 'active' | 'preorder' | 'quote' | 'completed';
   date?: { tr: string; en: string };
   time?: { tr: string; en: string };
   title: { tr: string; en: string };
@@ -62,7 +62,7 @@ export const freeWebinar: Education = {
   currency: "TL",
   duration: { tr: "60 Dakika", en: "60 Minutes" },
   language: "Türkçe",
-  status: "active",
+  status: "completed",
   date: { tr: "24 Ekim 2026 Cumartesi", en: "Saturday, October 24, 2026" },
   time: { tr: "12:00 - 13:00 (TSİ)", en: "12:00 - 13:00 (TRT / UTC+3)" },
   title: {
@@ -127,7 +127,7 @@ export const activeWorkshop: Education = {
   price: 1000,
   vatIncluded: false,
   currency: "TL",
-  duration: { tr: "3 Saat", en: "3 Hours" },
+  duration: { tr: "3 Saat (ara dahil)", en: "3 Hours (including break)" },
   language: "Türkçe",
   status: "active",
   title: {
@@ -135,51 +135,59 @@ export const activeWorkshop: Education = {
     en: "Make Your Work Easier with AI"
   },
   shortDescription: {
-    tr: "Tekrarlayan bir işinizi seçin, yapay zekâ destekli bir görev akışı tasarlayın ve çıktıyı kontrol ederek geliştirin.",
-    en: "Choose a recurring task, design an AI-assisted workflow and improve the result through structured review."
+    tr: "Yapay zekâyı yalnızca kullanmayın, işinizin bir parçası haline getirin.",
+    en: "Don't just use AI. Make it part of your workflow."
   },
   description: {
-    tr: "Bu üç saatlik canlı workshopta e-posta, toplantı notu ve araştırma örneklerinden kendi işinize uygun bir uygulama planına ilerleyeceksiniz.",
-    en: "This three-hour live workshop uses email, meeting notes and research examples to help you build a practical plan for your own work."
+    tr: "3 saatlik canlı ve uygulamalı bu eğitimde etkili prompt oluşturmayı, AI ile araştırma ve analiz yapmayı, profesyonel içerikler üretmeyi ve tekrar eden görevleriniz için AI destekli iş akışları tasarlamayı öğreneceksiniz.",
+    en: "In this 3-hour live, hands-on workshop, you'll learn how to write effective prompts, conduct AI-powered research and analysis, create professional content, and design AI-assisted workflows for repetitive tasks."
   },
   targetAudience: {
-    tr: "Girişimciler, freelancerlar, KOBİ çalışanları ve AI araçlarını günlük işlerinde daha düzenli kullanmak isteyen profesyoneller.",
-    en: "Entrepreneurs, freelancers, SME professionals and people starting to use AI in their daily work."
+    tr: "Girişimciler, yöneticiler, pazarlama ve satış profesyonelleri, freelancer’lar ve iş süreçlerinde AI kullanmak isteyen herkes. Teknik bilgi veya yazılım deneyimi gerekmemektedir.",
+    en: "Entrepreneurs, managers, marketing and sales professionals, freelancers, and anyone looking to integrate AI into everyday work. No coding or advanced technical knowledge required."
   },
   outcomes: {
     tr: [
-      "AI kullanımına uygun bir iş görevi seçeceksiniz.",
-      "Görev, bağlam, kaynak, çıktı biçimi ve kontrol ölçütünü tanımlayacaksınız.",
-      "Toplantı, e-posta veya araştırma görevini örnek bir akışa dönüştüreceksiniz.",
-      "Kendi işiniz için bir görev akışı ve 7 günlük deneme planı hazırlayacaksınız."
+      "Profesyonel prompt oluşturma becerisi",
+      "AI ile araştırma, analiz ve raporlama",
+      "Tekrarlayan işler için AI iş akışı tasarımı",
+      "AI çıktılarını doğrulama yöntemleri",
+      "Kişisel 7 günlük AI uygulama planı",
+      "Bonus: Eğitim materyalleri ve uygulama şablonları."
     ],
     en: [
-      "Select a suitable task for AI use.",
-      "Define instructions, context, source material and review criteria.",
-      "Practise with a meeting, email or research workflow.",
-      "Leave with one workflow and a seven-day trial plan."
+      "Professional prompt engineering skills",
+      "AI-powered research, analysis, and reporting",
+      "AI workflow design for repetitive tasks",
+      "AI output verification techniques",
+      "A personalized 7-day AI implementation plan",
+      "Bonus: Training materials and practical templates."
     ]
   },
   topics: {
     tr: [
-      "Görev seçimi ve AI sınırları",
-      "Açık talimat ve bağlam oluşturma",
-      "Toplantı ve e-posta uygulama örnekleri",
-      "Kaynak ve çıktı kontrolü",
-      "Kendi görevinde uygulama ve 7 günlük deneme planı"
+      "1. Yapay Zekâyı Etkili Kullanma (15 dk) — AI’ın çalışma mantığı, doğru araç seçimi ve insan kontrolü.",
+      "2. Prompt Engineering (35 dk) — Etkili prompt teknikleri, bağlam yönetimi ve uygulamalı prompt geliştirme.",
+      "3. AI ile Araştırma, Analiz ve İçerik Üretimi (40 dk) — Araştırma, doküman analizi, raporlama ve içerik oluşturma.",
+      "Ara (10 dk)",
+      "4. AI Asistanları ve İş Akışları (40 dk) — Tekrarlayan görevler, AI asistanları ve otomasyon fırsatları.",
+      "5. Kendi AI İş Akışınızı Tasarlayın (30 dk) — Gerçek bir iş görevi üzerinden uygulamalı AI çözümü geliştirme.",
+      "Değerlendirme ve Soru-Cevap (10 dk)"
     ],
     en: [
-      "Task selection and AI limitations",
-      "Clear instructions and context",
-      "Meeting and email examples",
-      "Source and output review",
-      "Implementation plan and Q&A"
+      "1. Using AI Effectively (15 min) — How AI works, choosing the right tools, and human oversight.",
+      "2. Prompt Engineering (35 min) — Effective prompting techniques, context management, and hands-on practice.",
+      "3. AI for Research, Analysis & Content Creation (40 min) — Research, document analysis, reporting, and content creation.",
+      "Break (10 min)",
+      "4. AI Assistants & Workflows (40 min) — Repetitive tasks, AI assistants, and automation opportunities.",
+      "5. Design Your Own AI Workflow (30 min) — Build a practical AI-assisted solution for a real business task.",
+      "Review & Q&A (10 min)"
     ]
   },
   cohorts: [
     {
       id: "cohort-a",
-      name: { tr: "Cohort A Canlı Workshop", en: "Cohort A Live Workshop" },
+      name: { tr: "Grup A Canlı Workshop", en: "Group A Live Workshop" },
       date: { tr: "14 Kasım 2026 Cumartesi", en: "Saturday, November 14, 2026" },
       time: { tr: "12:00 - 15:00 (TSİ)", en: "12:00 - 15:00 (TRT / UTC+3)" },
       paytrUrl: "https://www.paytr.com/link/BXgOERV",
@@ -188,7 +196,7 @@ export const activeWorkshop: Education = {
     },
     {
       id: "cohort-b",
-      name: { tr: "Cohort B Canlı Workshop", en: "Cohort B Live Workshop" },
+      name: { tr: "Grup B Canlı Workshop", en: "Group B Live Workshop" },
       date: { tr: "15 Kasım 2026 Pazar", en: "Sunday, November 15, 2026" },
       time: { tr: "12:00 - 15:00 (TSİ)", en: "12:00 - 15:00 (TRT / UTC+3)" },
       paytrUrl: "https://www.paytr.com/link/aaCEqrN",
