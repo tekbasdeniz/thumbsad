@@ -1,3 +1,4 @@
+import { localizedMetadata } from "@/lib/seo";
 import ExperiencesMarquee from "@/components/sections/ExperiencesMarquee";
 import TruOptSection from "@/components/sections/TruOptSection";
 import Hero from "@/components/sections/Hero";
@@ -8,10 +9,8 @@ import { client } from "@/sanity/lib/client";
 import { getLocalizedPostsQuery } from "@/sanity/lib/queries";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "ThumbsAd | AI Growth Partner for Advanced Digital Projects",
-  description: "A project-oriented structure that brings together growth strategy, artificial intelligence systems, and implementation.",
-};
+
+export const metadata = localizedMetadata("", "en", "ThumbsAd | AI Growth Partner for Advanced Digital Projects", "A project-oriented structure that brings together growth strategy, artificial intelligence systems, and implementation.");
 
 export const revalidate = 60;
 

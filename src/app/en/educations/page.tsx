@@ -1,5 +1,8 @@
+import { localizedMetadata } from "@/lib/seo";
 import Link from 'next/link';
 import { freeWebinar, activeWorkshop, openEducations, corporateEducations } from '../../../data/educations';
+
+export const metadata = localizedMetadata("educations", "en", "AI Training, Workshops and Webinars | ThumbsAd", "Explore ThumbsAd AI training programmes, live webinars and practical workshops.");
 
 export default function EducationsPageEN() {
   return (

@@ -1,3 +1,4 @@
+import { SITE_URL, safeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navbar/navbar";
@@ -16,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "ThumbsAd | İleri Düzey Dijital Projeler İçin AI Growth Partner",
   description:
     "Büyüme stratejisi, yapay zeka sistemleri ve uygulamayı bir araya getiren proje odaklı yapı.",
@@ -37,6 +39,17 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: safeJsonLd({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "ThumbsAd",
+            url: SITE_URL,
+            logo: `${SITE_URL}/images/thumbsad-logo.webp`,
+            description: "AI Growth Partner for digital marketing, growth strategy and AI transformation.",
+          }) }}
+        />
         <link
           rel="icon"
           href="/images/thumbsad-logo.webp"

@@ -1,10 +1,9 @@
+import { localizedMetadata } from "@/lib/seo";
 import type { Metadata } from 'next';
 import AboutDetail from '@/components/sections/AboutDetail';
 
-export const metadata: Metadata = {
-  title: 'About Us | ThumbsAd - AI Growth Partner',
-  description: 'ThumbsAd is an AI Growth & Transformation Partner that accelerates organizations’ digital transformation by combining artificial intelligence, growth strategy, and technology applications.',
-};
+
+export const metadata = localizedMetadata("about", "en", "About Us | ThumbsAd - AI Growth Partner", "ThumbsAd combines AI, growth strategy and technology implementation to support digital transformation.");
 
 export default function AboutPageEn() {
   return (
