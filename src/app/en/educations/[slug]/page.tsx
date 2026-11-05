@@ -1,3 +1,4 @@
+
 import { localizedMetadata, SITE_URL, safeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -173,6 +174,28 @@ export default async function EducationDetailPageEN({ params }: Props) {
               </p>
               <p className="text-xs text-gray-500 mt-0.5 font-medium">
                 Duration: {education.duration.en} | Price: TRY {education.price} + VAT
+              </p>
+            </div>
+
+            {/* Post-Payment Information */}
+            <div className="rounded-xl border border-blue-200 border-l-4 border-l-[#0a246b] bg-blue-50 px-5 py-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#0a246b] text-lg" aria-hidden="true">
+                  ℹ
+                </span>
+                <h3 className="text-sm font-bold text-[#0a246b]">
+                  Post-Payment Information
+                </h3>
+              </div>
+
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Once your payment is confirmed, your training details and
+                Google Meet link will be sent to the email address
+                provided during checkout{" "}
+                <strong className="font-semibold text-[#0a246b]">
+                  within 24 hours by the ThumbsAd team
+                </strong>
+                . Please make sure you enter your email address correctly.
               </p>
             </div>
 

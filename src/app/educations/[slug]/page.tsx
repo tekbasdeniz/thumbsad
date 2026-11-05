@@ -1,3 +1,4 @@
+
 import { localizedMetadata, SITE_URL, safeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -164,6 +165,29 @@ export default async function EducationDetailPageTR({ params }: Props) {
               </p>
               <p className="text-xs text-gray-500 mt-0.5 font-medium">
                 Süre: {education.duration.tr} | Ücret: {education.price} TL + KDV
+              </p>
+            </div>
+
+            {/* Ödeme Sonrası Bilgilendirme */}
+            <div className="rounded-xl border border-blue-200 border-l-4 border-l-[#0a246b] bg-blue-50 px-5 py-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#0a246b] text-lg" aria-hidden="true">
+                  ℹ
+                </span>
+                <h3 className="text-sm font-bold text-[#0a246b]">
+                  Ödeme Sonrası Bilgilendirme
+                </h3>
+              </div>
+
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Ödemeniz onaylandıktan sonra eğitim katılım bilgileriniz ve
+                Google Meet bağlantınız, ödeme sırasında belirttiğiniz
+                e-posta adresine{" "}
+                <strong className="font-semibold text-[#0a246b]">
+                  24 saat içerisinde ThumbsAd ekibimiz tarafından
+                </strong>{" "}
+                iletilecektir. Lütfen e-posta adresinizi doğru
+                girdiğinizden emin olun.
               </p>
             </div>
 
