@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
+import { submitConfirmedForm } from '@/lib/submit-confirmed-form';
 
 interface WebinarRegisterModalProps {
   isOpen: boolean;
@@ -9,8 +10,6 @@ interface WebinarRegisterModalProps {
   programTitle: string;
   lang?: 'tr' | 'en';
 }
-
-const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztAxAj9p27Af3twfxUYOapjhJ5HckRMmjTTV3sCzz0XM0APwDSD3ZQy7eNXMpqjjbD/exec";
 
 export default function WebinarRegisterModal({
   isOpen,
@@ -23,6 +22,7 @@ export default function WebinarRegisterModal({
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const submission = useRef<'idle' | 'pending' | 'complete'>('idle');
 
   if (!isOpen) return null;
 
@@ -34,42 +34,31 @@ export default function WebinarRegisterModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submission.current !== 'idle') return;
 
     if (!marketingConsent) {
       return;
     }
 
+    submission.current = 'pending';
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = process.env.NEXT_PUBLIC_WEBINAR_SCRIPT_URL || DEFAULT_SCRIPT_URL;
-
-      if (!scriptUrl) {
-        throw new Error('Script URL is not defined');
-      }
-
-      await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      await submitConfirmedForm('webinar', {
           fullName,
           email,
           marketingConsent,
           program: programTitle,
           language: lang,
-        }),
-      });
-
+      }, lang);
+      submission.current = 'complete';
       setIsSuccess(true);
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } catch {
+      submission.current = 'idle';
       alert(
         lang === 'en'
-          ? 'An error occurred while registering. Please try again.'
-          : 'Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.'
+          ? 'We could not confirm your registration. Please contact info@thumbsad.com before submitting again.'
+          : 'Kaydınızı doğrulayamadık. Tekrar göndermeden önce info@thumbsad.com üzerinden bize ulaşın.'
       );
     } finally {
       setIsSubmitting(false);
@@ -77,6 +66,8 @@ export default function WebinarRegisterModal({
   };
 
   const handleClose = () => {
+    if (submission.current === 'pending') return;
+    submission.current = 'idle';
     setIsSuccess(false);
     setFullName('');
     setEmail('');
@@ -116,7 +107,7 @@ export default function WebinarRegisterModal({
               <p className="text-sm text-gray-600 mt-1 font-medium">{programTitle}</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form id="webinar-registration" onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                   {lang === 'en' ? 'Full Name *' : 'Ad Soyad *'}
@@ -209,7 +200,7 @@ export default function WebinarRegisterModal({
                       >
                         Aydınlatma Metni
                       </Link>
-                      'ni okudum; ThumbsAd tarafından AI, pazarlama ve growth içerikleri hakkında tarafıma e-posta gönderilmesini kabul ediyorum.
+                      &apos;ni okudum; ThumbsAd tarafından AI, pazarlama ve growth içerikleri hakkında tarafıma e-posta gönderilmesini kabul ediyorum.
                     </>
                   )}
                 </label>
