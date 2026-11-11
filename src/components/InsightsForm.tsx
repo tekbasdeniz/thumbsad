@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useTransition, FormEvent, Suspense } from "react";
+import { useState, useTransition, useRef, FormEvent, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { submitConfirmedForm } from "@/lib/submit-confirmed-form";
 
 interface InsightsFormProps {
   lang?: "tr" | "en";
@@ -20,9 +21,11 @@ function InsightsFormContent({ lang }: InsightsFormProps) {
   const [isPending, startTransition] = useTransition();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const submission = useRef<"idle" | "pending" | "complete">("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submission.current !== "idle") return;
     setErrorMessage("");
 
     if (!consent) {
@@ -52,32 +55,18 @@ function InsightsFormContent({ lang }: InsightsFormProps) {
       consentStatus: isEn ? "Approved" : "Onaylandı",
     };
 
+    submission.current = "pending";
     startTransition(async () => {
       try {
-        const endpoint = process.env.NEXT_PUBLIC_INSIGHTS_SHEET_URL;
-
-        if (!endpoint) {
-          throw new Error("Endpoint URL is not defined");
-        }
-
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        const resData = await response.json();
-        console.log("InsightsForm response:", resData);
-
+        await submitConfirmedForm("insights", payload, isEn ? "en" : "tr");
+        submission.current = "complete";
         setIsSubmitted(true);
-      } catch (err) {
-        console.error("InsightsForm submission error:", err);
+      } catch {
+        submission.current = "idle";
         setErrorMessage(
           isEn
-            ? "Submission failed. Please try again later."
-            : "Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
+            ? "We could not confirm your registration. Please contact info@thumbsad.com before submitting again."
+            : "Kaydınızı doğrulayamadık. Tekrar göndermeden önce info@thumbsad.com üzerinden bize ulaşın."
         );
       }
     });
@@ -105,7 +94,7 @@ function InsightsFormContent({ lang }: InsightsFormProps) {
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
+        <form id="insights-registration" onSubmit={handleSubmit} className="flex flex-col space-y-6">
           <div className="text-center space-y-2">
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#0a246b] tracking-tight">
               {isEn ? "Join the ThumbsAd Insights Community" : "ThumbsAd Insights Topluluğuna Katılın"}
